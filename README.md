@@ -38,3 +38,7 @@ Website resmi untuk mempromosikan dan menjual produk Batik Wistara secara online
 - **Backend**: PHP Native / Laravel  
 - **Database**: MySQL  
 - **Tools**: XAMPP / Laragon, phpMyAdmin
+
+Pembagian peran:
+Irfan:
+Ian:
