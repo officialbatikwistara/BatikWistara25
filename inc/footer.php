@@ -110,6 +110,13 @@ function submitPopupForm(e) {
   });
 }
 </script>
+<script>
+  window.addEventListener("load", function () {
+    const navbar = document.querySelector(".navbar");
+    const navbarHeight = navbar.offsetHeight;
+    document.body.style.paddingTop = navbarHeight + "px";
+  });
+</script>
 
 
 </body>

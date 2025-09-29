@@ -34,7 +34,7 @@
 </section>
 
 <!-- Berita Terkini -->
-<?php include './config/koneksi.php';?>
+<?php include './config/koneksi.php'; ?>
 <section class="section-berita">
   <div class="container-berita">
     <h2 class="berita-title">Berita Terkini</h2>
@@ -42,14 +42,30 @@
 
     <div class="berita-grid">
       <?php
-      $berita = mysqli_query($conn, "SELECT * FROM berita ORDER BY tanggal DESC LIMIT 3");
+      $berita = mysqli_query($conn, "SELECT * FROM berita ORDER BY tanggal DESC LIMIT 4");
       while ($b = mysqli_fetch_array($berita)) :
       ?>
         <div class="berita-card">
-          <img src="uploads/berita/<?= $b['gambar'] ?>" alt="<?= $b['judul'] ?>">
+          <!-- Gambar + sumber overlay -->
+          <div class="berita-img-wrapper">
+            <?php if (filter_var($b['gambar'], FILTER_VALIDATE_URL)) : ?>
+              <img src="<?= $b['gambar'] ?>" alt="<?= $b['judul'] ?>">
+            <?php else : ?>
+              <img src="uploads/berita/<?= $b['gambar'] ?>" alt="<?= $b['judul'] ?>">
+            <?php endif; ?>
+
+            <div class="berita-sumber-overlay">
+              <?php if (!empty($b['sumber'])): ?>
+                Sumber: <?= htmlspecialchars($b['sumber']) ?>
+              <?php endif; ?>
+            </div>
+          </div>
+
+          <!-- Judul & Deskripsi -->
           <h3 class="berita-judul"><?= $b['judul'] ?></h3>
           <p class="berita-deskripsi"><?= $b['deskripsi'] ?></p>
 
+          <!-- Link -->
           <?php if (!empty($b['tautan_sumber'])): ?>
             <a href="<?= $b['tautan_sumber'] ?>" target="_blank" class="berita-link">Baca Selengkapnya →</a>
           <?php else: ?>
@@ -58,9 +74,13 @@
         </div>
       <?php endwhile; ?>
     </div>
+
+    <!-- Tombol lihat semua -->
+    <div class="berita-footer">
+      <a href="berita.php" class="btn-lihat-semua">Lihat Semua Berita</a>
+    </div>
   </div>
 </section>
-
 
 
 <?php include 'inc/footer.php'; ?>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-image-navbar">
+<nav class="navbar navbar-expand-lg bg-image-navbar fixed-top">
   <div class="container">
 
     <!-- Kiri: Logo -->

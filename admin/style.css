@@ -1,0 +1,94 @@
+/* ---------- Global Admin Styles ---------- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f1ee;
+  display: flex;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  width: 200px;
+  background-color: #8B4513;
+  color: #fff;
+  min-height: 100vh;
+  padding: 20px 0;
+  flex-shrink: 0;
+}
+
+.sidebar h3 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 12px 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #5c3310;
+}
+
+/* ---------- Main Content ---------- */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  background-color: #f4f1ee;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  padding: 8px 14px;
+  background-color: #8B4513;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.btn:hover {
+  background-color: #5c3310;
+}
+
+/* ---------- Tables ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+table th, table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+/* ---------- Forms ---------- */
+input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #8B4513;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #5c3310;
+}
