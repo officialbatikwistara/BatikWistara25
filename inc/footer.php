@@ -31,16 +31,35 @@
         <h5 class="fw-bold mb-3">Kontak Kami</h5>
         <div class="d-flex">
           <div class="me-3" style="min-width: 80px;">Alamat</div>
-          <div>: Jl. Tambak Medokan Ayu VI C No.56B, Medokan Ayu, Rungkut, Surabaya 60295</div>
+          <div>: <a href="https://maps.app.goo.gl/WqHPo5eNBDqHykhM8" class="text-dark text-decoration-none">Jl. Tambak Medokan Ayu VI C No.56B, Medokan Ayu, 
+            Kec. Rungkut, Surabaya, Jawa Timur 60295</a></div>
         </div>
         <div class="d-flex">
           <div class="me-3" style="min-width: 80px;">WhatsApp</div>
           <div>: <a href="https://wa.me/6281234567890" class="text-dark text-decoration-none">0812-3456-7890</a></div>
         </div>
+        <!-- Email Link -->
         <div class="d-flex">
           <div class="me-3" style="min-width: 80px;">Email</div>
-          <div>: info@batikwistara.com</div>
+          <div>
+            : <a href="#" onclick="openEmailPopup()" class="text-dark text-decoration-none">official.batikwistara@gmail.com</a>
+          </div>
         </div>
+
+        <!-- Modal Pop-up Kirim Pesan -->
+        <div id="emailPopup" class="email-popup">
+          <div class="email-popup-content">
+            <span class="email-popup-close" onclick="closeEmailPopup()">&times;</span>
+            <h3>Kirim Pesan ke Batik Wistara</h3>
+            <form id="popupEmailForm" onsubmit="submitPopupForm(event)">
+              <input type="text" id="popupNama" placeholder="Nama Anda" required>
+              <input type="email" id="popupEmail" placeholder="Email Anda" required>
+              <textarea id="popupPesan" placeholder="Pesan Anda" rows="4" required></textarea>
+              <button type="submit">Kirim</button>
+            </form>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -54,5 +73,43 @@
   </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function openEmailPopup() {
+  document.getElementById('emailPopup').style.display = 'block';
+}
+
+function closeEmailPopup() {
+  document.getElementById('emailPopup').style.display = 'none';
+}
+
+function submitPopupForm(e) {
+  e.preventDefault();
+
+  const nama  = document.getElementById('popupNama').value;
+  const email = document.getElementById('popupEmail').value;
+  const pesan = document.getElementById('popupPesan').value;
+
+  const formData = new FormData();
+  formData.append('nama', nama);
+  formData.append('email', email);
+  formData.append('pesan', pesan);
+
+  fetch('kirim-email.php', {
+    method: 'POST',
+    body: formData
+  })
+  .then(res => res.text())
+  .then(data => {
+    alert(data); // tampilkan respon dari PHP
+    document.getElementById('popupEmailForm').reset();
+    closeEmailPopup();
+  })
+  .catch(err => {
+    alert('Terjadi kesalahan saat mengirim pesan.');
+    console.error(err);
+  });
+}
+</script>
+
 
 </body>

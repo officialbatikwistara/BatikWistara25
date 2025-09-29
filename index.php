@@ -14,21 +14,53 @@
 
       <!-- Gambar Kanan -->
       <div class="col-md-6 text-center">
-        <img src="./img/hero-batik.png" alt="Batik Wistara" class="img-fluid" style="max-height: 400px;">
+        <img src="./img/logowarna.png" alt="Batik Wistara" class="img-fluid" style="max-height: 400px;">
       </div>
     </div>
   </div>
 </section>
 
 <!-- Tentang Singkat -->
-<section class="py-5 bg-white text-center">
-  <div class="container">
-    <h2 class="mb-4">Tentang Kami</h2>
-    <p class="mx-auto" style="max-width: 700px;">
-      Sejak awal berdiri, <strong>Batik Wistara</strong> telah berkomitmen untuk menjaga warisan batik Nusantara melalui desain autentik dan kualitas premium. Temukan beragam koleksi kami mulai dari motif klasik hingga modern.
+<section class="section-about-img text-center">
+  <div class="container-about-img">
+    <h2 class="mb-3 fw-bold ">Tentang Kami</h2>
+    <hr class="divider">
+    <p class="about-text">
+      Sejak awal berdiri, <strong>Batik Wistara</strong> berkomitmen menjaga warisan batik Nusantara melalui desain yang autentik dan kualitas premium.
+      Koleksi kami mencakup beragam motif, mulai dari klasik penuh makna hingga gaya modern yang elegan.
     </p>
-    <a href="/about" class="btn btn-outline-dark mt-3">Selengkapnya</a>
+    <a href="/about" class="about-button">Selengkapnya</a>
   </div>
 </section>
+
+<!-- Berita Terkini -->
+<?php include './config/koneksi.php';?>
+<section class="section-berita">
+  <div class="container-berita">
+    <h2 class="berita-title">Berita Terkini</h2>
+    <hr class="berita-divider">
+
+    <div class="berita-grid">
+      <?php
+      $berita = mysqli_query($conn, "SELECT * FROM berita ORDER BY tanggal DESC LIMIT 3");
+      while ($b = mysqli_fetch_array($berita)) :
+      ?>
+        <div class="berita-card">
+          <img src="uploads/berita/<?= $b['gambar'] ?>" alt="<?= $b['judul'] ?>">
+          <h3 class="berita-judul"><?= $b['judul'] ?></h3>
+          <p class="berita-deskripsi"><?= $b['deskripsi'] ?></p>
+
+          <?php if (!empty($b['tautan_sumber'])): ?>
+            <a href="<?= $b['tautan_sumber'] ?>" target="_blank" class="berita-link">Baca Selengkapnya →</a>
+          <?php else: ?>
+            <a href="berita-detail.php?id=<?= $b['id_berita'] ?>" class="berita-link">Baca Selengkapnya →</a>
+          <?php endif; ?>
+        </div>
+      <?php endwhile; ?>
+    </div>
+  </div>
+</section>
+
+
 
 <?php include 'inc/footer.php'; ?>

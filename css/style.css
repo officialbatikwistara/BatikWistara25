@@ -76,6 +76,156 @@ Navbar Styling
   }
 }
 
+/* ==========================
+TENTANG KAMI INDEX
+========================== */
+.section-about-img {
+  background-image: url('../img/bg-section1.png'); /* Ganti dengan path gambar kamu */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 100px 20px;
+  color: #fff;
+  position: relative;
+}
+
+.section-about-img::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: #00000092; /* Overlay gelap agar teks terbaca */
+  z-index: 1;
+}
+
+.container-about-img {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.container-about-img h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.divider {
+  width: 60px;
+  height: 3px;
+  background-color: #f1c40f;
+  margin: 0 auto 30px auto;
+  border: none;
+}
+
+.about-text {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #eee;
+  margin-bottom: 30px;
+}
+
+.about-button {
+  display: inline-block;
+  background-color: #f1c40f;
+  color: #000;
+  padding: 12px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.about-button:hover {
+  background-color: #d4ac0d;
+  color: #fff;
+}
+
+/* ==========================
+BERITA INDEX
+========================== */
+.section-berita {
+  background-color: #f9f9f9;
+  padding: 80px 20px;
+}
+
+.container-berita {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.berita-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2c2c2c;
+}
+
+.berita-divider {
+  width: 60px;
+  height: 3px;
+  background-color: #8B4513;
+  margin: 20px auto 40px auto;
+  border: none;
+}
+
+.berita-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.berita-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  overflow: hidden;
+  width: 100%;
+  max-width: 320px;
+  text-align: left;
+}
+
+.berita-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.berita-judul {
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 15px 20px 0 20px;
+  color: #333;
+}
+
+.berita-deskripsi {
+  padding: 10px 20px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.berita-link {
+  display: block;
+  padding: 10px 20px 20px 20px;
+  font-weight: bold;
+  color: #8B4513;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.berita-link:hover {
+  color: #5c3310;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .berita-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
 /* Hover di footer */
 footer a:hover {
@@ -83,3 +233,48 @@ footer a:hover {
   text-decoration: underline;
 }
 
+.email-popup {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.email-popup-content {
+  background: #fff;
+  padding: 30px;
+  max-width: 400px;
+  margin: 100px auto;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.email-popup-close {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#popupEmailForm input,
+#popupEmailForm textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#popupEmailForm button {
+  width: 100%;
+  background-color: #8B4513;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
