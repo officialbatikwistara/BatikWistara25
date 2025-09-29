@@ -30,6 +30,15 @@
           <a class="nav-link px-4 <?= basename($_SERVER['PHP_SELF']) == 'kontak.php' ? 'active' : '' ?>" href="/kontak">Kontak</a>
         </li>
       </ul>
+
+      <!-- Logo Login Admin di pojok kanan -->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/login.php" title="Login Admin">
+            <img src="./img/admin-icon.png" alt="Admin" height="32">
+          </a>
+        </li>
+      </ul>
     </div>
 
   </div>
