@@ -1,0 +1,85 @@
+/* ==========================
+HEADER
+========================== */
+body {
+  font-family: "Cabin", sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Libre Caslon Text", serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+/* Warna emas */
+.text-gold {
+  color: #ac7b32;
+}
+
+.text-dark {
+  color: #1a2247 !important;
+}
+
+
+/* ==========================
+Navbar Styling 
+========================== */
+.bg-image-navbar {
+  background-image: url('../img/bg-nav.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Ubah warna teks semua nav-link */
+.navbar .nav-link {
+  font-family: "Cabin", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #1a2247 !important; 
+}
+
+/* Warna teks saat hover */
+.navbar .nav-link:hover {
+  color: #ac7b32 !important; /* Putih saat di-hover */
+}
+
+/* Warna teks link yang sedang aktif */
+.navbar .nav-link.active {
+  color: #ac7b32 !important;
+  font-weight: bold;
+}
+
+@media (max-width: 991.98px) {
+  /* Collapse menu background agar kontras di mobile */
+  .navbar-collapse {
+    padding: 1rem;
+    border-radius: 0 0 10px 10px;
+  }
+
+  /* Link nav agar tidak terlalu rapat dan rata tengah */
+  .navbar-nav .nav-link {
+    display: block;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-size: 16px;
+  }
+
+  /* Jarak atas-bawah navbar */
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  /* Logo tetap ukuran proporsional */
+  .navbar-brand img {
+    height: 50px;
+  }
+}
+
+
+/* Hover di footer */
+footer a:hover {
+  color: #ac7b32 !important;
+  text-decoration: underline;
+}
+
