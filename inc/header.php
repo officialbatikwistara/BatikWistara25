@@ -15,4 +15,5 @@
 
     <!-- Custom CSS (wajib di bawah) -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
