@@ -265,12 +265,17 @@ BERITA INDEX
   background-color: #5c3310;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .berita-grid {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
+@media (max-width: 576px) {
+  .berita-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /* ==========================
 LOGIN PAGE
