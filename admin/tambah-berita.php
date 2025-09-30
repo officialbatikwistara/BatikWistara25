@@ -2,8 +2,19 @@
 include 'header.php';
 include '../config/koneksi.php';
 
+function slugify($text) {
+  $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+  $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+  $text = preg_replace('~[^-\w]+~', '', $text);
+  $text = trim($text, '-');
+  $text = preg_replace('~-+~', '-', $text);
+  $text = strtolower($text);
+  return empty($text) ? 'berita-' . time() : $text;
+}
+
 if (isset($_POST['simpan_berita'])) {
   $judul         = mysqli_real_escape_string($conn, $_POST['judul']);
+  $slug          = slugify($judul);
   $deskripsi     = mysqli_real_escape_string($conn, $_POST['deskripsi']);
   $isi           = mysqli_real_escape_string($conn, $_POST['isi_berita']);
   $tanggal       = $_POST['tanggal'];
@@ -25,9 +36,9 @@ if (isset($_POST['simpan_berita'])) {
   }
 
   $query = mysqli_query($conn, "INSERT INTO berita 
-    (judul, deskripsi, isi_berita, gambar, tanggal, sumber, tautan_sumber)
+    (judul, slug, deskripsi, isi_berita, gambar, tanggal, sumber, tautan_sumber)
     VALUES 
-    ('$judul', '$deskripsi', '$isi', '$gambar_final', '$tanggal', '$sumber', '$tautan_sumber')");
+    ('$judul', '$slug', '$deskripsi', '$isi', '$gambar_final', '$tanggal', '$sumber', '$tautan_sumber')");
 
   if ($query) {
     header("Location: dashboard.php");

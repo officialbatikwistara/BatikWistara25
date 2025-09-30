@@ -1,9 +1,12 @@
 /* ==========================
 HEADER
 ========================== */
-body {
+body{
   font-family: "Cabin", sans-serif;
   padding-top: 80px;
+}
+a{
+  font-family: "Cabin", sans-serif;
 }
 
 h1, h2, h3, h4, h5 {
@@ -146,9 +149,11 @@ TENTANG KAMI INDEX
 /* ==========================
 BERITA INDEX
 ========================== */
+/* ===== Section Berita Terkini ===== */
 .section-berita {
   padding: 60px 20px;
-  background: #f9f9f9;
+  background-color: #f8f8f8;
+  font-family: 'Poppins', sans-serif;
 }
 
 .container-berita {
@@ -157,95 +162,105 @@ BERITA INDEX
 }
 
 .berita-title {
+  font-size: 32px;
   text-align: center;
-  font-size: 28px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .berita-divider {
   width: 80px;
   height: 3px;
-  background: #8B4513;
-  margin: 0 auto 32px;
+  background-color: #5D4037;
+  margin: 0 auto 40px auto;
   border: none;
 }
 
+/* Grid */
 .berita-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* TAMPIL 4 KOLOM FIX */
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: 24px;
 }
 
+/* Card */
 .berita-card {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  background: #fff;
+  justify-content: space-between;
+  background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   padding: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+  height: 100%;
 }
 
+.berita-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Gambar */
 .berita-img-wrapper {
   position: relative;
-  width: 100%;
-  height: 180px;
   overflow: hidden;
-  border-radius: 4px;
-  margin-bottom: 12px;
+  border-radius: 6px;
 }
 
 .berita-img-wrapper img {
   width: 100%;
-  height: 100%;
+  height: 180px;
   object-fit: cover;
-  display: block;
+  border-radius: 6px;
 }
 
 .berita-sumber-overlay {
   position: absolute;
-  bottom: 6px;
+  bottom: 8px;
   left: 8px;
-  font-size: 11px;
+  background: rgba(0, 0, 0, 0.6);
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-style: italic;
-  pointer-events: none;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
+/* Judul */
 .berita-judul {
   font-size: 18px;
-  margin: 0 0 8px;
-  font-weight: bold;
-  color: #333;
+  font-weight: 600;
+  margin: 12px 0 6px;
 }
 
+/* Deskripsi 3 baris maksimal */
 .berita-deskripsi {
-  flex-grow: 1;
-  font-size: 14px;
   color: #555;
-  line-height: 1.5;
-  max-height: 66px;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+/* Link */
 .berita-link {
-  margin-top: 12px;
-  font-size: 14px;
-  color: #8B4513;
+  margin-top: auto;
+  color: #5D4037;
+      font-weight: 700;
   text-decoration: none;
-  font-weight: bold;
-}
-.berita-link:hover {
-  text-decoration: underline;
+  transition: color 0.3s;
 }
 
-/* Tombol lihat semua */
+.berita-link:hover {
+  color: #dfbe02;
+}
+
+/* Tombol Lihat Semua */
 .berita-footer {
   text-align: center;
   margin-top: 40px;
@@ -253,29 +268,42 @@ BERITA INDEX
 
 .btn-lihat-semua {
   display: inline-block;
-  padding: 10px 24px;
-  background-color: #8B4513;
-  color: white;
-  border-radius: 25px;
+  background-color: #5D4037;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
   text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-.btn-lihat-semua:hover {
-  background-color: #5c3310;
+  font-weight: 500;
+  transition: background 0.3s;
 }
 
-@media (max-width: 992px) {
-  .berita-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.btn-lihat-semua:hover {
+  background-color: #3E2723;
 }
-@media (max-width: 576px) {
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .berita-title {
+    font-size: 26px;
+  }
+
   .berita-grid {
     grid-template-columns: 1fr;
   }
+
+  .berita-deskripsi {
+    font-size: 13px;
+  }
 }
 
+/* ==========================
+PAGE DETAIL BERITA
+========================== */
+.berita-isi {
+  font-size: 16px;
+  line-height: 1.8;
+  text-align: justify;
+}
 
 /* ==========================
 LOGIN PAGE

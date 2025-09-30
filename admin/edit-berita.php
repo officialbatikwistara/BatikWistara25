@@ -110,4 +110,4 @@ if (!$berita) {
   <input type="url" name="tautan_sumber" value="<?= htmlspecialchars($berita['tautan_sumber']) ?>">
 
   <button type="submit" name="update_berita">Simpan Perubahan</button>
-</form>
+</button>

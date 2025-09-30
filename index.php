@@ -69,7 +69,7 @@
           <?php if (!empty($b['tautan_sumber'])): ?>
             <a href="<?= $b['tautan_sumber'] ?>" target="_blank" class="berita-link">Baca Selengkapnya →</a>
           <?php else: ?>
-            <a href="berita-detail.php?id=<?= $b['id_berita'] ?>" class="berita-link">Baca Selengkapnya →</a>
+            <a href="/berita/<?= $b['slug'] ?>" class="berita-link">Baca Selengkapnya →</a>
           <?php endif; ?>
         </div>
       <?php endwhile; ?>
@@ -77,7 +77,7 @@
 
     <!-- Tombol lihat semua -->
     <div class="berita-footer">
-      <a href="berita.php" class="btn-lihat-semua">Lihat Semua Berita</a>
+      <a href="berita" class="btn-lihat-semua">Lihat Semua Berita</a>
     </div>
   </div>
 </section>

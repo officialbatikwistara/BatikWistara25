@@ -1,10 +1,10 @@
 RewriteEngine On
+RewriteBase /BatikWistara25/
 
-# Jangan rewrite jika file/dir memang ada (biarkan CSS/JS/IMG diakses langsung)
+# Biarkan file asli (CSS, JS, gambar) tetap bisa diakses
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# Hilangkan .php dari URL
-RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule ^(.+)$ $1.php [L,QSA]
+# SEO URL: /berita/slug → berita-slug.php?slug=slug
+RewriteRule ^berita/([a-zA-Z0-9-]+)$ berita-slug.php?slug=$1 [L,QSA]
