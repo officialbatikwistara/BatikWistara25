@@ -1,10 +1,30 @@
 RewriteEngine On
 RewriteBase /BatikWistara25/
 
-# Biarkan file asli (CSS, JS, gambar) tetap bisa diakses
+# Biarkan file asli (gambar, CSS, JS) tetap bisa diakses
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# SEO URL: /berita/slug → berita-slug.php?slug=slug
-RewriteRule ^berita/([a-zA-Z0-9-]+)$ berita-slug.php?slug=$1 [L,QSA]
+# Redirect /index.php → /
+RewriteCond %{THE_REQUEST} \s/BatikWistara25/index\.php[^\s]* [NC]
+RewriteRule ^index\.php$ /BatikWistara25/ [R=301,L]
+
+# URL: /berita/slug → berita-slug.php?slug=slug
+RewriteRule ^berita/([a-zA-Z0-9-_]+)$ berita-slug.php?slug=$1 [L,QSA]
+
+# URL: /berita → berita.php
+RewriteRule ^berita/?$ berita.php [L]
+
+# URL: /about → about.php (tanpa .php)
+RewriteRule ^about/?$ about.php [L]
+
+# URL: /kontak → kontak.php
+RewriteRule ^kontak/?$ kontak.php [L]
+
+# URL: /produk → produk.php (contoh lain)
+RewriteRule ^produk/?$ produk.php [L]
+
+# Catch-all: jika nama file PHP-nya sama dengan slug (ex: /galeri → galeri.php)
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/]+)/?$ $1.php [L]

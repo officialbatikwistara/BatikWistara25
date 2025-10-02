@@ -1,9 +1,24 @@
+<?php
+if (!function_exists('asset')) {
+  $https  = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || 
+            (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443);
+  $scheme = $https ? 'https' : 'http';
+  $basePath = trim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
+  $basePath = $basePath ? '/' . $basePath : '';
+  define('BASE_URL', $scheme . '://' . $_SERVER['HTTP_HOST'] . $basePath . '/');
+  
+  function asset($path) {
+    return BASE_URL . ltrim($path, '/');
+  }
+}
+?>
+
 <nav class="navbar navbar-expand-lg bg-image-navbar fixed-top">
   <div class="container">
 
     <!-- Kiri: Logo -->
     <a class="navbar-brand me-auto" href="/index">
-      <img src="./img/logowarna.svg" alt="Batik Wistara" height="60">
+      <img src="<?= asset('img/logowarna.svg') ?>" alt="Batik Wistara" height="60">
     </a>
 
     <!-- Toggler untuk mobile -->
@@ -34,7 +49,7 @@
 
     <!-- Kanan: Login Admin -->
     <div class="d-none d-lg-block">
-      <a class="nav-link" href="/admin/login.php" title="Login Admin">
+      <a class="nav-link" href="/login" title="Login Admin">
         <img src="./img/admin-icon.png" alt="Admin" height="32">
       </a>
     </div>

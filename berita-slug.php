@@ -17,10 +17,13 @@ if (mysqli_num_rows($query) === 0) {
   $berita = mysqli_fetch_assoc($query);
   $meta_title = htmlspecialchars($berita['judul']) . " - Batik Wistara";
   $meta_description = mb_substr(strip_tags($berita['deskripsi']), 0, 160);
+  $base_url = '/BatikWistara25/';
+
   $og_image = filter_var($berita['gambar'], FILTER_VALIDATE_URL)
     ? $berita['gambar']
-    : '/uploads/berita/' . $berita['gambar'];
-  $meta_canonical = "http://" . $_SERVER['HTTP_HOST'] . "/BatikWistara25/berita/" . $berita['slug'];
+    : $base_url . 'uploads/berita/' . $berita['gambar'];
+
+  $meta_canonical = "http://" . $_SERVER['HTTP_HOST'] . $base_url . "berita/" . $berita['slug'];
 }
 ?>
 
@@ -83,13 +86,13 @@ if (mysqli_num_rows($query) === 0) {
             </header>
 
             <?php if (!empty($berita['gambar'])): ?>
-              <figure class="mb-4">
-                <img src="uploads/berita/<?= $berita['gambar'] ?>" 
-                      class="img-fluid rounded" 
-                      alt="Gambar Berita" 
-                      itemprop="image"
-                      style="max-height: 400px; object-fit: cover;" 
-                      loading="lazy">
+                <figure class="mb-4">
+                  <img src="<?= $base_url ?>uploads/berita/<?= $berita['gambar'] ?>" 
+                        class="img-fluid rounded" 
+                        alt="Gambar Berita" 
+                        itemprop="image"
+                        style="max-height: 400px; object-fit: cover;" 
+                        loading="lazy">
                 <?php if (!empty($berita['sumber'])): ?>
                   <figcaption class="small text-muted mt-2">
                     Sumber: <?= htmlspecialchars($berita['sumber']) ?>
@@ -113,7 +116,8 @@ if (mysqli_num_rows($query) === 0) {
               </p>
             <?php endif; ?>
 
-            <a href="/BatikWistara25/berita.php" class="btn btn-dark mt-4">&larr; Kembali ke Berita</a>
+            <a href="<?= asset('berita') ?>" class="btn btn-dark mt-4">&larr; Kembali ke Berita</a>
+
           </article>
         <?php endif; ?>
 

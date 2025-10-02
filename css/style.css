@@ -5,7 +5,8 @@ body{
   font-family: "Cabin", sans-serif;
   padding-top: 80px;
 }
-a{
+
+a, p{
   font-family: "Cabin", sans-serif;
 }
 
@@ -152,7 +153,7 @@ BERITA INDEX
 /* ===== Section Berita Terkini ===== */
 .section-berita {
   padding: 60px 20px;
-  background-color: #f8f8f8;
+  background-image: url('img/bg-section2.png');
   font-family: 'Poppins', sans-serif;
 }
 
@@ -309,18 +310,18 @@ PAGE DETAIL BERITA
 LOGIN PAGE
 ========================== */
 .login-container {
-  background-image: url('../img/bg-section2.png');
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  background-image: url('/img/bg-section2.png');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .login-box {
-    background: #fff;
-    padding: 40px 35px;
-    width: 100%;
-    max-width: 400px;
+  background: #fff;
+  padding: 40px 35px;
+  width: 100%;
+  max-width: 400px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   border-radius: 12px;
 }
