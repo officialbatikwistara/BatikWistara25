@@ -12,6 +12,7 @@ if (!function_exists('asset')) {
   }
 }
 ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <footer class="bg-light text-dark pt-5 pb-4 shadow-sm">
   <div class="container">
