@@ -1,8 +1,8 @@
+<?php include 'header.php'; ?>
+<?php include 'navbar.php'; ?>
+<?php include '../config/koneksi.php'; ?>
+
 <?php
-include '../config/koneksi.php';
-include 'header.php';
-
-
 $kategori = mysqli_query($conn, "SELECT * FROM kategori_produk ORDER BY id_kategori ASC");
 ?>
 
@@ -30,3 +30,4 @@ $kategori = mysqli_query($conn, "SELECT * FROM kategori_produk ORDER BY id_kateg
   </table>
 </div>
 
+<?php include 'footer.php'; ?>

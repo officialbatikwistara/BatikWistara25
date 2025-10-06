@@ -12,50 +12,51 @@ if (!function_exists('asset')) {
   }
 }
 ?>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <footer class="bg-light text-dark pt-5 pb-4 shadow-sm">
   <div class="container">
-    <div class="row text-center text-md-start align-items-start gy-4 gx-5">
+    <div class="row gy-4 text-center text-md-start align-items-start">
 
       <!-- Logo & Deskripsi -->
-      <div class="col-md-5">
+      <div class="col-12 col-md-5">
         <div class="mb-3">
           <img src="<?= asset('img/logowarna.svg') ?>" alt="Batik Wistara" height="80">
         </div>
-        <p style="max-width: 90%;">
+        <p class="mx-auto mx-md-0" style="max-width: 90%;">
           <strong>Batik Wistara</strong> adalah wujud cinta terhadap warisan budaya Indonesia. Dibuat dengan tangan yang terampil dan penuh cinta.
         </p>
       </div>
 
-      <!-- Navigasi -->
-      <div class="col-md-3">
+      <!-- Navigasi (hanya muncul di md ke atas) -->
+      <div class="d-none d-md-block col-md-3">
         <h5 class="fw-bold mb-3">Navigasi</h5>
         <ul class="list-unstyled">
-          <li><a href="<?= BASE_URL ?>index" class="text-dark text-decoration-none">Beranda</a></li>
-          <li><a href="<?= BASE_URL ?>about" class="text-dark text-decoration-none">Tentang</a></li>
-          <li><a href="<?= BASE_URL ?>katalog" class="text-dark text-decoration-none">Katalog</a></li>
-          <li><a href="<?= BASE_URL ?>berita" class="text-dark text-decoration-none">Berita</a></li>
+          <li><a href="<?= BASE_URL ?>index" class="text-dark text-decoration-none d-block">Beranda</a></li>
+          <li><a href="<?= BASE_URL ?>about" class="text-dark text-decoration-none d-block">Tentang</a></li>
+          <li><a href="<?= BASE_URL ?>katalog" class="text-dark text-decoration-none d-block">Katalog</a></li>
+          <li><a href="<?= BASE_URL ?>berita" class="text-dark text-decoration-none d-block">Berita</a></li>
         </ul>
       </div>
 
       <!-- Kontak -->
-      <div class="col-md-4">
+      <div class="col-12 col-md-4">
         <h5 class="fw-bold mb-3">Kontak Kami</h5>
         <ul class="list-unstyled">
           <li class="mb-2">
             <strong>Alamat:</strong><br>
-            <a href="https://maps.app.goo.gl/WqHPo5eNBDqHykhM8" target="_blank" class="text-dark text-decoration-none">
+            <a href="https://maps.app.goo.gl/WqHPo5eNBDqHykhM8" target="_blank" class="text-dark text-decoration-none d-block">
               Jl. Tambak Medokan Ayu VI C No.56B, Surabaya, Jawa Timur 60295
             </a>
           </li>
           <li class="mb-2">
             <strong>WhatsApp:</strong><br>
-            <a href="https://wa.me/6281234567890" class="text-dark text-decoration-none">0812-3456-7890</a>
+            <a href="https://wa.me/6281234567890" class="text-dark text-decoration-none d-block">0812-3456-7890</a>
           </li>
           <li>
             <strong>Email:</strong><br>
-            <a href="#" onclick="openEmailPopup()" class="text-dark text-decoration-none">official.batikwistara@gmail.com</a>
+            <a href="#" onclick="openEmailPopup()" class="text-dark text-decoration-none d-block">official.batikwistara@gmail.com</a>
           </li>
         </ul>
       </div>
@@ -69,4 +70,6 @@ if (!function_exists('asset')) {
     </div>
   </div>
 </footer>
+
+
 

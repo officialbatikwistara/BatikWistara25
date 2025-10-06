@@ -1,6 +1,4 @@
 <?php
-include '../config/koneksi.php';
-
 // Cek apakah ada ID yang dikirim
 if (isset($_GET['id'])) {
   $id = intval($_GET['id']);

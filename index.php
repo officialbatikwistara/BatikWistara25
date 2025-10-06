@@ -4,21 +4,28 @@
 <!-- Hero Section -->
 <section class="bg-light py-5 text-center text-md-start">
   <div class="container">
-    <div class="row align-items-center">
+    <div class="row align-items-center justify-content-between flex-column-reverse flex-md-row text-center text-md-start">
+
       <!-- Teks Kiri -->
-      <div class="col-md-6 mb-4 mb-md-0">
-        <h1 class="display-5 fw-bold mb-3">Selamat Datang di <span class="text-gold">Batik Wistara</span></h1>
-        <p class="lead">Batik Wistara menghadirkan karya batik berkualitas tinggi, memadukan keindahan budaya dan sentuhan modern.</p>
+      <div class="col-12 col-md-6 mt-4 mt-md-0">
+        <h1 class="display-5 fw-bold mb-3">
+          Selamat Datang di <span class="text-gold">Batik Wistara</span>
+        </h1>
+        <p class="lead">
+          Batik Wistara menghadirkan karya batik berkualitas tinggi, memadukan keindahan budaya dan sentuhan modern.
+        </p>
         <a href="/katalog" class="btn btn-dark mt-3 px-4 py-2">Lihat Katalog</a>
       </div>
 
       <!-- Gambar Kanan -->
-      <div class="col-md-6 text-center">
+      <div class="col-12 col-md-6 mb-4 mb-md-0 text-center">
         <img src="./img/logowarna.png" alt="Batik Wistara" class="img-fluid" style="max-height: 400px;">
       </div>
+
     </div>
   </div>
 </section>
+
 
 <!-- Tentang Singkat -->
 <section class="section-about-img text-center">

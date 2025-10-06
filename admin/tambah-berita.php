@@ -1,7 +1,8 @@
-<?php
-include 'header.php';
-include '../config/koneksi.php';
+<?php include 'header.php'; ?>
+<?php include 'navbar.php'; ?>
+<?php include '../config/koneksi.php'; ?>
 
+<?php
 function slugify($text) {
   $text = preg_replace('~[^\pL\d]+~u', '-', $text);
   $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
@@ -80,3 +81,4 @@ if (isset($_POST['simpan_berita'])) {
     <button type="submit" name="simpan_berita">Simpan</button>
 </form>
 
+<?php include 'footer.php'; ?>

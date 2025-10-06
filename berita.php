@@ -35,24 +35,35 @@ $query = mysqli_query($conn, "SELECT * FROM berita $whereClause ORDER BY tanggal
     <p class="text-center text-muted mb-4">Lihat informasi dan kegiatan terbaru dari Batik Wistara</p>
     <hr class="w-25 mx-auto mb-4">
 
-    <!-- Filter -->
-    <form method="GET" class="row align-items-center justify-content-center g-2 mb-5">
-      <div class="col-md-5">
-        <input type="text" name="search" class="form-control" placeholder="Cari berita..." value="<?= htmlspecialchars($search) ?>">
+    <!-- Filter Form -->
+    <form method="GET" class="row gy-2 gx-3 align-items-center justify-content-center mb-5">
+      <!-- Input Search -->
+      <div class="col-12 col-sm-8 col-md-5">
+        <div class="input-group">
+          <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+          <input type="text" name="search" class="form-control" placeholder="Cari berita..." value="<?= htmlspecialchars($search) ?>">
+        </div>
       </div>
-      <div class="col-auto">
+
+      <!-- Select Limit -->
+      <div class="col-6 col-sm-3 col-md-auto">
         <select name="limit" class="form-select" onchange="this.form.submit()">
           <option value="8" <?= $limit == 8 ? 'selected' : '' ?>>8</option>
           <option value="20" <?= $limit == 20 ? 'selected' : '' ?>>20</option>
           <option value="50" <?= $limit == 50 ? 'selected' : '' ?>>50</option>
         </select>
       </div>
-      <div class="col-auto">
-        <button type="submit" class="btn btn-dark">Cari</button>
+
+      <!-- Tombol Cari -->
+      <div class="col-6 col-sm-3 col-md-auto">
+        <button type="submit" class="btn btn-dark w-100 d-flex align-items-center justify-content-center gap-1">
+          <i class="bi bi-funnel-fill"></i>
+          <span>Cari</span>
+        </button>
       </div>
     </form>
 
-    <!-- Grid Card -->
+    <!-- Grid Berita -->
     <div class="row g-4">
       <?php if (mysqli_num_rows($query) > 0): ?>
         <?php while ($b = mysqli_fetch_array($query)) :
@@ -60,7 +71,7 @@ $query = mysqli_query($conn, "SELECT * FROM berita $whereClause ORDER BY tanggal
             ? $b['gambar']
             : (function_exists('asset') ? asset('uploads/berita/' . $b['gambar']) : 'uploads/berita/' . $b['gambar']);
         ?>
-          <div class="col-md-6 col-lg-3">
+          <div class="col-12 col-sm-6 col-lg-3">
             <div class="card h-100 shadow-sm border-0 berita-card">
               <div class="position-relative">
                 <img src="<?= $gambar ?>" class="card-img-top" alt="<?= htmlspecialchars($b['judul']) ?>" style="height: 220px; object-fit: cover;">
@@ -93,7 +104,7 @@ $query = mysqli_query($conn, "SELECT * FROM berita $whereClause ORDER BY tanggal
     <!-- Pagination -->
     <?php if ($total_pages > 1): ?>
       <nav class="mt-5" aria-label="Navigasi halaman berita">
-        <ul class="pagination justify-content-center">
+        <ul class="pagination justify-content-center flex-wrap">
           <li class="page-item <?= ($page <= 1) ? 'disabled' : '' ?>">
             <a class="page-link" href="?page=<?= max(1, $page - 1) ?>&limit=<?= $limit ?>&search=<?= urlencode($search) ?>">‹</a>
           </li>

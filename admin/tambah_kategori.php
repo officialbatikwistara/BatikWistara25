@@ -1,6 +1,8 @@
+<?php include 'header.php'; ?>
+<?php include 'navbar.php'; ?>
+<?php include '../config/koneksi.php'; ?>
+
 <?php
-include '../config/koneksi.php';
-include 'header.php';
 
 // Proses jika form disubmit
 if (isset($_POST['submit'])) {
@@ -34,3 +36,5 @@ if (isset($_POST['submit'])) {
     <a href="kategori.php" class="btn btn-secondary">Kembali</a>
   </form>
 </div>
+
+<?php include 'footer.php'; ?>

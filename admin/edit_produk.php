@@ -1,60 +1,64 @@
+<?php include 'header.php'; ?>
+<?php include 'navbar.php'; ?>
+<?php include '../config/koneksi.php'; ?>
+
 <?php
-include '../config/koneksi.php';
-include 'header.php';
-
-// Ambil ID produk dari URL
 $id = intval($_GET['id'] ?? 0);
-
-// Cek apakah produk ditemukan
 $produk = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = $id");
 $data = mysqli_fetch_assoc($produk);
+
 if (!$data) {
   echo "<script>alert('Produk tidak ditemukan.'); window.location='katalog.php';</script>";
   exit;
 }
 
-// Ambil semua kategori
 $kategori = mysqli_query($conn, "SELECT * FROM kategori_produk");
 
-// Proses update
 if (isset($_POST['submit'])) {
-  $nama = mysqli_real_escape_string($conn, $_POST['nama_produk']);
-  $deskripsi = mysqli_real_escape_string($conn, $_POST['deskripsi']);
-  $harga = intval($_POST['harga']);
-  $id_kategori = intval($_POST['id_kategori']);
+  $nama         = trim(mysqli_real_escape_string($conn, $_POST['nama_produk']));
+  $deskripsi    = trim(mysqli_real_escape_string($conn, $_POST['deskripsi']));
+  $harga        = intval($_POST['harga']);
+  $id_kategori  = intval($_POST['id_kategori']);
+  $link_shopee  = mysqli_real_escape_string($conn, $_POST['link_shopee']);
+  $link_tiktok  = mysqli_real_escape_string($conn, $_POST['link_tiktok']);
+  $folder       = "../uploads/produk/";
+  $gambar_baru  = $data['gambar']; // default gambar lama
 
-  // Cek apakah admin mengganti gambar
+  // Jika upload gambar baru
   if ($_FILES['gambar']['name']) {
     $gambar = $_FILES['gambar']['name'];
     $tmp = $_FILES['gambar']['tmp_name'];
-    $folder = "../uploads/produk/";
-    $gambar_baru = time() . '_' . $gambar;
+    $ext = pathinfo($gambar, PATHINFO_EXTENSION);
+    $allowed_ext = ['jpg', 'jpeg', 'png', 'webp'];
+    $new_name = time() . '_' . preg_replace('/[^a-zA-Z0-9._-]/', '_', $gambar);
 
-    // Hapus gambar lama
-    if (file_exists($folder . $data['gambar'])) {
-      unlink($folder . $data['gambar']);
+    if (in_array(strtolower($ext), $allowed_ext)) {
+      // Hapus gambar lama
+      if (!empty($data['gambar']) && file_exists($folder . $data['gambar'])) {
+        unlink($folder . $data['gambar']);
+      }
+
+      // Upload gambar baru
+      if (move_uploaded_file($tmp, $folder . $new_name)) {
+        $gambar_baru = $new_name;
+      } else {
+        echo "<script>alert('Gagal upload gambar baru');</script>";
+      }
+    } else {
+      echo "<script>alert('Format gambar tidak valid');</script>";
     }
-
-    // Upload gambar baru
-    move_uploaded_file($tmp, $folder . $gambar_baru);
-
-    // Update semua field + gambar
-    $query = mysqli_query($conn, "UPDATE produk SET 
-      nama_produk = '$nama', 
-      deskripsi = '$deskripsi',
-      harga = '$harga',
-      gambar = '$gambar_baru',
-      id_kategori = '$id_kategori'
-      WHERE id_produk = $id");
-  } else {
-    // Update tanpa mengganti gambar
-    $query = mysqli_query($conn, "UPDATE produk SET 
-      nama_produk = '$nama', 
-      deskripsi = '$deskripsi',
-      harga = '$harga',
-      id_kategori = '$id_kategori'
-      WHERE id_produk = $id");
   }
+
+  // Update data ke database
+  $query = mysqli_query($conn, "UPDATE produk SET 
+    nama_produk = '$nama', 
+    deskripsi = '$deskripsi',
+    harga = '$harga',
+    gambar = '$gambar_baru',
+    id_kategori = '$id_kategori',
+    link_shopee = '$link_shopee',
+    link_tiktok = '$link_tiktok'
+    WHERE id_produk = $id");
 
   if ($query) {
     echo "<script>alert('Produk berhasil diperbarui.'); window.location='katalog.php';</script>";
@@ -95,8 +99,18 @@ if (isset($_POST['submit'])) {
     </div>
 
     <div class="mb-3">
+      <label class="form-label">Link Shopee</label>
+      <input type="url" name="link_shopee" class="form-control" value="<?= htmlspecialchars($data['link_shopee'] ?? '') ?>">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Link TikTokShop</label>
+      <input type="url" name="link_tiktok" class="form-control" value="<?= htmlspecialchars($data['link_tiktok'] ?? '') ?>">
+    </div>
+
+    <div class="mb-3">
       <label class="form-label">Gambar Saat Ini</label><br>
-      <img src="../uploads/produk/<?= $data['gambar'] ?>" width="150">
+      <img src="../uploads/produk/<?= htmlspecialchars($data['gambar']) ?>" width="150" class="img-thumbnail">
     </div>
 
     <div class="mb-3">
@@ -109,3 +123,4 @@ if (isset($_POST['submit'])) {
   </form>
 </div>
 
+<?php include 'footer.php'; ?>

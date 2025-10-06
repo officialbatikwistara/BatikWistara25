@@ -1,6 +1,7 @@
 /* ==========================
 HEADER
 ========================== */
+
 body{
   font-family: "Cabin", sans-serif;
   padding-top: 80px;
@@ -55,29 +56,38 @@ Navbar Styling
   font-weight: bold;
 }
 
-@media (max-width: 991.98px) {
-  /* Collapse menu background agar kontras di mobile */
-  .navbar-collapse {
-    padding: 1rem;
-    border-radius: 0 0 10px 10px;
+/* ⛔ Perbaiki overflow horizontal di navbar */
+@media (max-width: 767.98px) {
+  html, body {
+    overflow-x: hidden;
   }
 
-  /* Link nav agar tidak terlalu rapat dan rata tengah */
+  .navbar {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .navbar-nav {
+    width: 100%;
+  }
+
+  .navbar-nav .nav-item {
+    width: 100%;
+  }
+
   .navbar-nav .nav-link {
-    display: block;
+    width: 100%;
     text-align: center;
     padding: 0.75rem 1rem;
-    font-size: 16px;
   }
 
-  /* Jarak atas-bawah navbar */
-  .navbar {
-    padding: 0.5rem 1rem;
+  .navbar .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
-  /* Logo tetap ukuran proporsional */
   .navbar-brand img {
-    height: 50px;
+    max-width: 50px;
   }
 }
 
@@ -283,7 +293,7 @@ BERITA INDEX
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .berita-title {
     font-size: 26px;
   }
@@ -375,7 +385,9 @@ LOGIN PAGE
     font-size: 14px;
 }
 
-/* Hover di footer */
+/* ==========================
+FOOTER
+========================== */
 footer a:hover {
   color: #ac7b32 !important;
   text-decoration: underline;
@@ -425,4 +437,35 @@ footer a:hover {
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
+}
+
+/* FOOTER RESPONSIVE UNTUK MOBILE */
+@media (max-width: 600px) {
+footer .container {
+  overflow-x: hidden;
+}
+
+
+  /* Buat kolom footer full-width di mobile */
+  footer .row > div {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  /* Pastikan text/link membungkus dengan baik */
+  footer a {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Tambahan opsional: buat teks kontak lebih rapi */
+  footer ul {
+    padding-left: 0;
+  }
+
+  footer ul li {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
 }

@@ -1,7 +1,8 @@
-<?php
-include 'header.php';
-include '../config/koneksi.php';
+<?php include 'header.php'; ?>
+<?php include 'navbar.php'; ?>
+<?php include '../config/koneksi.php'; ?>
 
+<?php
 if (!isset($_GET['id']) && !isset($_POST['update_berita'])) {
   echo "ID berita tidak ditemukan.";
   exit;
@@ -111,3 +112,5 @@ if (!$berita) {
 
   <button type="submit" name="update_berita">Simpan Perubahan</button>
 </button>
+
+<?php include 'footer.php'; ?>
