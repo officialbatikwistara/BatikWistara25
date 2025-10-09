@@ -69,6 +69,34 @@
   </div>
 </section>
 
+<!-- Visi & Misi Kami -->
+<section class="py-5 bg-white text-center">
+  <div class="container">
+    <h2 class="fw-bold mb-4">Visi & Misi Kami</h2>
+    <div class="row justify-content-center text-start">
+      <!-- Visi -->
+      <div class="col-md-5 mb-4 mb-md-0">
+        <h4 class="fw-bold text-center mb-3">Visi</h4>
+        <p class="text-center">
+          Menjadi pelopor dalam pelestarian dan inovasi batik Indonesia melalui pendekatan yang modern,
+          inklusif, dan berkelanjutan.
+        </p>
+      </div>
+
+      <!-- Misi -->
+      <div class="col-md-5">
+        <h4 class="fw-bold text-center mb-3">Misi</h4>
+        <ul>
+          <li>Memproduksi batik berkualitas tinggi dengan desain yang elegan dan kontemporer.</li>
+          <li>Memberdayakan pengrajin lokal melalui kolaborasi yang adil dan berkelanjutan.</li>
+          <li>Mengedukasi masyarakat tentang nilai budaya dan sejarah batik Indonesia.</li>
+          <li>Menyediakan platform digital yang mudah diakses untuk promosi dan distribusi produk.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="py-5 bg-white text-center fade-section">
   <script>
   document.addEventListener("DOMContentLoaded", () => {
