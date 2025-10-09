@@ -41,7 +41,6 @@
 </section>
 
 <!-- Berita Terkini -->
-<?php include './config/koneksi.php'; ?>
 <section class="section-berita">
   <div class="container-berita">
     <h2 class="berita-title">Berita Terkini</h2>
@@ -53,7 +52,6 @@
       while ($b = mysqli_fetch_array($berita)) :
       ?>
         <div class="berita-card">
-          <!-- Gambar + sumber overlay -->
           <div class="berita-img-wrapper">
             <?php if (filter_var($b['gambar'], FILTER_VALIDATE_URL)) : ?>
               <img src="<?= $b['gambar'] ?>" alt="<?= $b['judul'] ?>">
@@ -68,11 +66,9 @@
             </div>
           </div>
 
-          <!-- Judul & Deskripsi -->
           <h3 class="berita-judul"><?= $b['judul'] ?></h3>
           <p class="berita-deskripsi"><?= $b['deskripsi'] ?></p>
 
-          <!-- Link -->
           <?php if (!empty($b['tautan_sumber'])): ?>
             <a href="<?= $b['tautan_sumber'] ?>" target="_blank" class="berita-link">Baca Selengkapnya →</a>
           <?php else: ?>
@@ -82,12 +78,11 @@
       <?php endwhile; ?>
     </div>
 
-    <!-- Tombol lihat semua -->
     <div class="berita-footer">
       <a href="berita" class="btn-lihat-semua">Lihat Semua Berita</a>
     </div>
   </div>
 </section>
 
-
+<?php include './partials/footer.php'; ?>
 <?php include 'inc/footer.php'; ?>
