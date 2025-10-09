@@ -777,80 +777,44 @@ footer a:hover {
   background-color: #1a2247; /* hover biru tua */
 }
 
-/* ==== Kontak Kami ==== */
-.kontak-container {
-  background-color: #fffaf3;
-  padding: 70px 20px;
-  text-align: center;
-  font-family: "Poppins", sans-serif;
+/* ====== KONTAK KAMI STYLE ====== */
+.kontak-section {
+  background-color: #F8F9FA; /* lembut */
 }
 
-.kontak-container h2 {
-  font-size: 2.2rem;
-  margin-bottom: 40px;
-  color: #2c2c54;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+/* warna-warna sesuai palet */
+.text-primary {
+  color: #071739 !important;
+}
+.text-accent {
+  color: #A68868 !important;
+}
+.btn-outline-accent {
+  border: 2px solid #A68868;
+  color: #A68868;
+  transition: 0.3s;
+}
+.btn-outline-accent:hover {
+  background-color: #A68868;
+  color: white;
 }
 
-.kontak-container h2 i {
-  color: #a67b5b;
-}
-
-/* kotak utama */
-.kontak-box {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-/* tiap item kontak */
-.kontak-item {
-  display: flex;
-  align-items: flex-start;
-  background-color: #fff;
-  padding: 25px 30px;
-  border-radius: 18px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.kontak-card {
+  background-color: #ffffff;
+  border-radius: 15px;
   transition: all 0.3s ease;
-  text-align: left;
 }
-
-.kontak-item:hover {
+.kontak-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 15px rgba(7, 23, 57, 0.1);
 }
 
-.kontak-item i {
-  font-size: 1.8rem;
-  color: #a67b5b;
-  margin-right: 18px;
-  margin-top: 5px;
-  min-width: 35px;
-  text-align: center;
+@media (max-width: 768px) {
+  .kontak-card {
+    margin-bottom: 20px;
+  }
 }
 
-.kontak-item h4 {
-  margin: 0;
-  font-size: 1.1rem;
-  color: #2c2c54;
-  margin-bottom: 5px;
-}
-
-.kontak-item p,
-.kontak-item a {
-  font-size: 0.95rem;
-  color: #555;
-  text-decoration: none;
-}
-
-.kontak-item a:hover {
-  color: #a67b5b;
-}
 
 /* Responsif */
 @media (max-width: 600px) {
