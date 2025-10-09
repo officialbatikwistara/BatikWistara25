@@ -40,46 +40,31 @@
   </div>
 </section>
 
-<!-- Berita Terkini -->
-<section class="section-berita">
-  <div class="container-berita">
-    <h2 class="berita-title">Berita Terkini</h2>
-    <hr class="berita-divider">
-
-    <div class="berita-grid">
+<!-- ======== BERITA TERKINI ======== -->
+<section class="berita-section">
+  <div class="container">
+    <h2 class="text-center mb-5">Berita Terkini</h2>
+    <div class="row g-4">
       <?php
-      $berita = mysqli_query($conn, "SELECT * FROM berita ORDER BY tanggal DESC LIMIT 4");
-      while ($b = mysqli_fetch_array($berita)) :
+      include './config/koneksi.php';
+      $result = mysqli_query($conn, "SELECT * FROM berita ORDER BY tanggal DESC LIMIT 4");
+      while ($row = mysqli_fetch_assoc($result)) {
+        $gambar = $row['gambar'];
+        $judul = $row['judul'];
+        $deskripsi = substr($row['deskripsi'], 0, 100) . '...';
+        $slug = $row['slug'];
       ?>
-        <div class="berita-card">
-          <div class="berita-img-wrapper">
-            <?php if (filter_var($b['gambar'], FILTER_VALIDATE_URL)) : ?>
-              <img src="<?= $b['gambar'] ?>" alt="<?= $b['judul'] ?>">
-            <?php else : ?>
-              <img src="uploads/berita/<?= $b['gambar'] ?>" alt="<?= $b['judul'] ?>">
-            <?php endif; ?>
-
-            <div class="berita-sumber-overlay">
-              <?php if (!empty($b['sumber'])): ?>
-                Sumber: <?= htmlspecialchars($b['sumber']) ?>
-              <?php endif; ?>
-            </div>
+      <div class="col-md-3">
+        <div class="card berita-card">
+          <img src="<?= $gambar ?>" class="card-img-top" alt="<?= $judul ?>">
+          <div class="card-body">
+            <h5 class="card-title"><?= $judul ?></h5>
+            <p class="card-text"><?= $deskripsi ?></p>
+            <a href="detail_berita.php?slug=<?= $slug ?>" class="btn btn-outline-dark btn-sm">Baca Selengkapnya</a>
           </div>
-
-          <h3 class="berita-judul"><?= $b['judul'] ?></h3>
-          <p class="berita-deskripsi"><?= $b['deskripsi'] ?></p>
-
-          <?php if (!empty($b['tautan_sumber'])): ?>
-            <a href="<?= $b['tautan_sumber'] ?>" target="_blank" class="berita-link">Baca Selengkapnya →</a>
-          <?php else: ?>
-            <a href="/berita/<?= $b['slug'] ?>" class="berita-link">Baca Selengkapnya →</a>
-          <?php endif; ?>
         </div>
-      <?php endwhile; ?>
-    </div>
-
-    <div class="berita-footer">
-      <a href="berita" class="btn-lihat-semua">Lihat Semua Berita</a>
+      </div>
+      <?php } ?>
     </div>
   </div>
 </section>
