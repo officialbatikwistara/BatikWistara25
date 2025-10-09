@@ -777,21 +777,69 @@ footer a:hover {
   background-color: #1a2247; /* hover biru tua */
 }
 
-.kontak {
-  background-color: #f3e5d8; /* warna krem muda */
-  color: #1a1a2e; /* biru tua */
+.kontak-container {
+  background-color: #f9f4ef;
+  padding: 60px 20px;
+  text-align: center;
   font-family: 'Playfair Display', serif;
+  color: #1a1a2e;
+}
+
+.kontak-container h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #1a1a2e;
+}
+
+.kontak-box {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.kontak-item {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 15px;
   padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.kontak a {
-  color: #1a1a2e; /* samain warna dengan teks */
-  text-decoration: none; /* hilangin garis bawah */
+.kontak-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
-.kontak a:hover {
-  text-decoration: underline; /* biar tetap interaktif */
+.kontak-item i {
+  font-size: 1.8rem;
+  color: #9a6b4f;
+  margin-right: 20px;
+  width: 40px;
 }
+
+.kontak-item h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #1a1a2e;
+}
+
+.kontak-item p,
+.kontak-item a {
+  margin: 4px 0 0;
+  font-size: 1rem;
+  color: #1a1a2e;
+  text-decoration: none;
+}
+
+.kontak-item a:hover {
+  text-decoration: underline;
+  color: #9a6b4f;
+}
+
 
 
 /* FOOTER RESPONSIVE UNTUK MOBILE */
