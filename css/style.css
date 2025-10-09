@@ -777,6 +777,23 @@ footer a:hover {
   background-color: #1a2247; /* hover biru tua */
 }
 
+.kontak {
+  background-color: #f3e5d8; /* warna krem muda */
+  color: #1a1a2e; /* biru tua */
+  font-family: 'Playfair Display', serif;
+  padding: 20px;
+}
+
+.kontak a {
+  color: #1a1a2e; /* samain warna dengan teks */
+  text-decoration: none; /* hilangin garis bawah */
+}
+
+.kontak a:hover {
+  text-decoration: underline; /* biar tetap interaktif */
+}
+
+
 /* FOOTER RESPONSIVE UNTUK MOBILE */
 @media (max-width: 600px) {
   footer .container {
