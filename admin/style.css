@@ -9,13 +9,15 @@
   --pale-blue: #CDD5DB;
   --warm-tan: #A68868;
   --soft-gold: #E3C39D;
+  --text-dark: #2B3A55;
+  --text-light: #4B6382;
 }
 
-/* ===== Layout & Typography ===== */
+/* ===== Global ===== */
 body {
   background: linear-gradient(180deg, var(--pale-blue), #f8f9fa);
   font-family: 'Poppins', sans-serif;
-  color: var(--dark-navy);
+  color: var(--text-dark);
   font-size: 15px;
 }
 
@@ -35,6 +37,7 @@ body {
 .page-header h2 {
   font-weight: 700;
   letter-spacing: 0.5px;
+  color: var(--soft-gold);
 }
 
 .page-header i {
@@ -42,6 +45,7 @@ body {
   margin-right: 10px;
 }
 
+/* ===== Tombol Tambah ===== */
 .btn-add {
   background: var(--soft-gold);
   color: var(--dark-navy);
@@ -78,10 +82,10 @@ thead th {
   color: white;
   text-align: center;
   font-weight: 600;
-  border: none;
   padding: 14px 12px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  letter-spacing: 0.3px;
 }
 
 tbody tr {
@@ -93,7 +97,8 @@ tbody tr {
 tbody tr:hover {
   transform: scale(1.01);
   box-shadow: 0 8px 18px rgba(7, 23, 57, 0.15);
-  background-color: var(--pale-blue);
+  background-color: var(--light-blue);
+  color: white;
 }
 
 tbody td {
@@ -101,7 +106,8 @@ tbody td {
   text-align: center;
   vertical-align: middle;
   border: none;
-  color: var(--dark-navy);
+  color: var(--text-light);
+  font-weight: 500;
 }
 
 tbody td:first-child {
@@ -136,11 +142,11 @@ tbody td:first-child {
   display: inline-flex;
   align-items: center;
   gap: 5px;
+  color: #fff;
 }
 
 .btn-edit {
   background: var(--blue-gray);
-  color: #fff;
 }
 
 .btn-edit:hover {
@@ -150,7 +156,6 @@ tbody td:first-child {
 
 .btn-delete {
   background: #e74c3c;
-  color: white;
 }
 
 .btn-delete:hover {
@@ -158,18 +163,18 @@ tbody td:first-child {
   transform: scale(1.05);
 }
 
-/* ===== Link dalam Deskripsi ===== */
+/* ===== Link ===== */
 .text-primary {
-  color: var(--blue-gray) !important;
+  color: var(--soft-gold) !important;
   font-weight: 500;
 }
 
 .text-primary:hover {
-  color: var(--dark-navy) !important;
+  color: var(--warm-tan) !important;
   text-decoration: underline;
 }
 
-/* ===== Scrollbar (untuk tabel panjang) ===== */
+/* ===== Scrollbar ===== */
 .table-responsive::-webkit-scrollbar {
   height: 8px;
 }
@@ -187,6 +192,3 @@ tbody td:first-child {
 .table-responsive::-webkit-scrollbar-thumb:hover {
   background: var(--dark-navy);
 }
-
-/* ===== Responsif ===== */
-@media (max
