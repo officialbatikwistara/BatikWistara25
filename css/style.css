@@ -642,84 +642,88 @@ PAGE DETAIL BERITA
 }
 
 /* ==========================
-LOGIN PAGE (Enhanced Version)
+LOGIN PAGE (Booksaw Enhanced)
 ========================== */
 .login-container {
   background-image: url('/img/bg-section2.png');
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   background-color: #f5f0e6; /* krem lembut */
   background-size: cover;
   background-position: center;
-  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 180px); /* biar tidak tabrakan dengan header/footer */
+  padding: 60px 20px;
 }
 
+/* Kotak login */
 .login-box {
-  background: #fff;
-  padding: 50px 45px;
+  background: #ffffff;
   width: 100%;
-  max-width: 480px; /* sebelumnya 400px, sekarang lebih lebar */
-  box-shadow: 0 15px 40px rgba(26, 34, 71, 0.12); /* bayangan lebih lembut */
-  border-radius: 14px;
-  border-top: 6px solid #ac7b32; /* aksen emas */
-  transform: scale(1.02);
+  max-width: 550px; /* lebar diperbesar */
+  padding: 60px 50px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-top: 6px solid #ac7b32;
+  transition: all 0.3s ease;
 }
 
-.login-box h2 {
-  text-align: center;
-  color: #1a2247; /* biru tua */
-  margin-bottom: 30px;
+.login-box:hover {
+  transform: translateY(-4px);
+}
+
+/* Judul */
+.login-box h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
   font-weight: 700;
-  letter-spacing: 0.6px;
-  font-size: 28px;
+  color: #1a2247;
+  text-align: center;
+  margin-bottom: 35px;
 }
 
-.login-box input {
-  width: 100%;
-  padding: 14px 16px;
-  margin-bottom: 22px;
-  border-radius: 8px;
-  border: 1px solid #d4cbb7; /* krem tua */
-  font-size: 16px;
-  transition: 0.25s ease;
+/* Input fields */
+.login-box .form-control {
+  font-size: 17px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid #d4cbb7;
   background-color: #fdfcf9;
+  transition: all 0.25s ease;
 }
 
-.login-box input:focus {
-  border-color: #ac7b32; /* fokus emas */
-  outline: none;
-  box-shadow: 0 0 8px rgba(172, 123, 50, 0.4);
+.login-box .form-control:focus {
+  border-color: #ac7b32;
+  box-shadow: 0 0 8px rgba(172, 123, 50, 0.3);
 }
 
-.login-box button {
+/* Tombol */
+.login-box .btn-dark {
   width: 100%;
   padding: 14px;
-  background-color: #ac7b32; /* emas utama */
-  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 10px;
+  background-color: #ac7b32;
   border: none;
-  font-weight: 700;
-  border-radius: 8px;
-  font-size: 17px;
-  transition: background 0.3s, transform 0.2s;
+  transition: all 0.3s ease;
 }
 
-.login-box button:hover {
-  background-color: #1a2247; /* hover biru tua */
+.login-box .btn-dark:hover {
+  background-color: #1a2247;
   transform: translateY(-2px);
 }
 
 /* Pesan error */
-.error-msg {
-  background-color: #ffecec;
-  color: #b10000;
-  padding: 12px 16px;
-  margin-bottom: 18px;
-  border-left: 4px solid #ac7b32; /* aksen emas di sisi kiri */
-  border-radius: 6px;
+.alert-danger {
+  background-color: #fff3f3;
+  border-left: 4px solid #ac7b32;
+  color: #a80000;
   font-size: 15px;
+  padding: 12px 15px;
+  border-radius: 8px;
 }
+
 
 /* ==========================
 FOOTER
