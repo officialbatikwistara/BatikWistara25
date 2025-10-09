@@ -66,69 +66,72 @@ body {
 .table-container {
   background: #fff;
   border-radius: 20px;
-  padding: 30px;
+  padding: 25px;
   box-shadow: 0 10px 25px rgba(7, 23, 57, 0.15);
+  overflow: hidden;
 }
 
 /* ===== Table Style ===== */
 table {
-  border-collapse: separate;
-  border-spacing: 0 10px;
   width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
+/* ===== Header ===== */
 thead th {
-  background: linear-gradient(90deg, var(--dark-navy), var(--blue-gray));
-  color: white;
+  background: linear-gradient(90deg, #0a1931, #304b75);
+  color: #ffffff;
   text-align: center;
   font-weight: 600;
   padding: 14px 12px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
   letter-spacing: 0.3px;
+  border: none;
 }
 
+/* Biar header nyatu halus (rounded cuma di ujung kiri-kanan) */
+thead th:first-child {
+  border-top-left-radius: 15px;
+}
+thead th:last-child {
+  border-top-right-radius: 15px;
+}
+
+/* ===== Body ===== */
 tbody tr {
-  background: #ffffff;
-  box-shadow: 0 3px 12px rgba(7, 23, 57, 0.08);
+  background-color: #ffffff;
   transition: all 0.25s ease-in-out;
 }
 
 tbody tr:hover {
+  background-color: #f0f4fa;
   transform: scale(1.01);
-  box-shadow: 0 8px 18px rgba(7, 23, 57, 0.15);
-  background-color: var(--light-blue);
-  color: white;
 }
 
 tbody td {
-  padding: 16px 14px;
+  padding: 15px 12px;
   text-align: center;
   vertical-align: middle;
-  border: none;
-  color: var(--text-light);
+  border-bottom: 1px solid #e0e6ed;
+  color: #2B3A55;
   font-weight: 500;
-}
-
-tbody td:first-child {
-  font-weight: 600;
-  color: var(--dark-navy);
 }
 
 /* ===== Gambar ===== */
 .img-thumbnail {
-  width: 90px;
+  width: 85px;
   height: 70px;
   object-fit: cover;
   border-radius: 12px;
-  border: 2px solid var(--soft-gold);
-  box-shadow: 0 4px 10px rgba(7, 23, 57, 0.2);
+  border: 2px solid #e3c39d;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .img-thumbnail:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 15px rgba(7, 23, 57, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
 }
 
 /* ===== Tombol Aksi ===== */
@@ -138,57 +141,36 @@ tbody td:first-child {
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
-  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 5px;
   color: #fff;
+  transition: all 0.3s ease;
 }
 
 .btn-edit {
-  background: var(--blue-gray);
+  background: #304b75;
 }
-
 .btn-edit:hover {
-  background: var(--dark-navy);
+  background: #1b2b4a;
   transform: scale(1.05);
 }
 
 .btn-delete {
   background: #e74c3c;
 }
-
 .btn-delete:hover {
   background: #c0392b;
   transform: scale(1.05);
 }
 
-/* ===== Link ===== */
+/* ===== Link "Baca Selengkapnya" ===== */
 .text-primary {
-  color: var(--soft-gold) !important;
+  color: #e3c39d !important;
   font-weight: 500;
 }
-
 .text-primary:hover {
-  color: var(--warm-tan) !important;
+  color: #cfa76e !important;
   text-decoration: underline;
 }
 
-/* ===== Scrollbar ===== */
-.table-responsive::-webkit-scrollbar {
-  height: 8px;
-}
-
-.table-responsive::-webkit-scrollbar-track {
-  background: var(--pale-blue);
-  border-radius: 10px;
-}
-
-.table-responsive::-webkit-scrollbar-thumb {
-  background: var(--blue-gray);
-  border-radius: 10px;
-}
-
-.table-responsive::-webkit-scrollbar-thumb:hover {
-  background: var(--dark-navy);
-}
