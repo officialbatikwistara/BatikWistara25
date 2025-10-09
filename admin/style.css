@@ -1,204 +1,260 @@
-/* ==========================
-ADMIN - TAMBAH BERITA PAGE (ELEGANT GOLD STYLE)
-========================== */
-.form-container {
-  max-width: 950px;
-  margin: 50px auto;
-  background: linear-gradient(145deg, #fffaf3 0%, #f9f5e7 100%);
-  padding: 45px 55px;
-  border-radius: 16px;
-  box-shadow: 0 6px 25px rgba(26, 34, 71, 0.12);
-  border-top: 7px solid #ac7b32;
-  border-bottom: 2px solid #e0c08a;
-  transition: all 0.3s ease;
-}
+<?php include 'header.php'; ?>
+<?php include 'navbar.php'; ?>
+<?php include '../config/koneksi.php'; ?>
 
-.form-container:hover {
-  box-shadow: 0 8px 35px rgba(172, 123, 50, 0.25);
-  transform: translateY(-3px);
-}
-
-.form-container h1 {
-  text-align: center;
-  color: #1a2247;
-  margin-bottom: 35px;
-  font-weight: 800;
-  font-size: 32px;
-  letter-spacing: 1.2px;
-  text-shadow: 0 2px 3px rgba(172, 123, 50, 0.15);
-  position: relative;
-}
-
-.form-container h1::after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 4px;
-  background: #ac7b32;
-  margin: 10px auto 0;
-  border-radius: 2px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px 30px;
-}
-
-.form-grid label {
-  font-weight: 700;
-  color: #1a2247;
-  display: block;
-  margin-bottom: 8px;
-  font-size: 15px;
-}
-
-.form-grid input,
-.form-grid textarea {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1.8px solid #d3c6a0;
-  border-radius: 8px;
-  font-size: 15px;
-  background-color: #fffdf7;
-  transition: all 0.25s ease-in-out;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-}
-
-.form-grid input:focus,
-.form-grid textarea:focus {
-  border-color: #ac7b32;
-  background: #fffaf1;
-  box-shadow: 0 0 8px rgba(172, 123, 50, 0.3);
-  outline: none;
-}
-
-textarea {
-  resize: vertical;
-}
-
-/* Tombol Simpan */
-button[type="submit"] {
-  background: linear-gradient(135deg, #ac7b32 0%, #c89b56 100%);
-  color: #fff;
-  border: none;
-  padding: 14px 40px;
-  font-size: 17px;
-  font-weight: 700;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  letter-spacing: 0.5px;
-  box-shadow: 0 4px 12px rgba(172, 123, 50, 0.3);
-}
-
-button[type="submit"]:hover {
-  background: linear-gradient(135deg, #1a2247 0%, #2e3a6b 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(26, 34, 71, 0.35);
-}
-
-button[type="submit"]:active {
-  transform: translateY(1px);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .form-grid {
-    grid-template-columns: 1fr;
+<style>
+  /* Palet warna */
+  :root {
+    --dark-navy: #071739;
+    --blue-gray: #4B6382;
+    --light-blue: #A4B5C4;
+    --pale-blue: #CDD5DB;
+    --warm-tan: #A68868;
+    --soft-gold: #E3C39D;
   }
-  .form-container {
-    padding: 30px 25px;
+
+  body {
+    background: var(--pale-blue);
+    font-family: 'Poppins', sans-serif;
   }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 20px 0;
+    border-bottom: 4px solid var(--warm-tan);
+  }
+
+  .page-header h2 {
+    color: var(--dark-navy);
+    font-weight: 700;
+  }
+
+  .page-header i {
+    color: var(--warm-tan);
+    margin-right: 10px;
+  }
+
+  .btn-add {
+    background: var(--soft-gold);
+    color: var(--dark-navy);
+    border: none;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-add:hover {
+    background: var(--dark-navy);
+    color: white;
+  }
+
+  .table-container {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(7, 23, 57, 0.15);
+  }
+
+  table {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  thead {
+    background: var(--dark-navy);
+    color: white;
+  }
+
+  tbody tr:hover {
+    background-color: #f9f9f9;
+  }
+
+  td, th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 15px !important;
+  }
+
+  .img-thumbnail {
+    height: 70px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .btn-action {
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-edit {
+    background: var(--blue-gray);
+    color: #fff;
+  }
+
+  .btn-edit:hover {
+    background: var(--dark-navy);
+  }
+
+  .btn-delete {
+    background: #dc3545;
+    color: #fff;
+  }
+
+  .btn-delete:hover {
+    background: #a82d38;
+  }
+
+  @media (max-width: 768px) {
+    .page-header h2 {
+      font-size: 1.5rem;
+    }
+    td, th {
+      font-size: 13px;
+    }
+  }
+</style>
+
+/* ===================================
+   Admin Panel Styling - Batik Wistara
+   =================================== */
+
+/* 🎨 Palet Warna */
+:root {
+  --dark-navy: #071739;
+  --blue-gray: #4B6382;
+  --light-blue: #A4B5C4;
+  --pale-blue: #CDD5DB;
+  --warm-tan: #A68868;
+  --soft-gold: #E3C39D;
 }
 
-/* ===== Modern Bootstrap Admin Table Style ===== */
+/* ====== Layout Umum ====== */
 body {
-  background-color: #f8f9fa !important;
-  font-family: "Poppins", sans-serif;
+  background: var(--pale-blue);
+  font-family: 'Poppins', sans-serif;
+  color: var(--dark-navy);
 }
 
-/* Heading */
-h2 {
-  color: #1a2247;
-  letter-spacing: 0.5px;
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 20px 0;
+  border-bottom: 4px solid var(--warm-tan);
 }
 
-/* Card styling */
-.card {
-  border-radius: 16px;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+.page-header h2 {
+  color: var(--dark-navy);
+  font-weight: 700;
 }
 
-/* Table modern look */
-.table-modern {
-  font-size: 15px;
-  color: #333;
+.page-header i {
+  color: var(--warm-tan);
+  margin-right: 10px;
 }
 
-.table-modern thead {
-  background-color: #1a2247 !important;
-  color: #fff !important;
+/* ====== Tombol ====== */
+.btn-add {
+  background: var(--soft-gold);
+  color: var(--dark-navy);
+  border: none;
   font-weight: 600;
+  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
-.table-modern tbody tr:hover {
-  background-color: #f3f6ff !important;
-  transition: 0.2s ease;
+.btn-add:hover {
+  background: var(--dark-navy);
+  color: white;
+  transform: translateY(-2px);
 }
 
-/* Links */
-.link-baca {
-  color: #007bff;
-  text-decoration: none;
-  font-weight: 500;
+/* ====== Tabel ====== */
+.table-container {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(7, 23, 57, 0.15);
 }
 
-.link-baca:hover {
-  text-decoration: underline;
+table {
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-/* Button styling */
-.btn {
-  border-radius: 8px !important;
-  font-size: 14px !important;
-  font-weight: 500;
+thead {
+  background: var(--dark-navy);
+  color: white;
+  font-size: 15px;
+}
+
+tbody tr {
   transition: all 0.2s ease-in-out;
 }
 
-.btn-warning {
-  background-color: #f4b000 !important;
-  border: none;
+tbody tr:hover {
+  background-color: #f9f9f9;
+  transform: scale(1.005);
 }
 
-.btn-warning:hover {
-  background-color: #d99a00 !important;
+td, th {
+  vertical-align: middle;
+  text-align: center;
+  padding: 15px !important;
 }
 
-.btn-danger {
-  background-color: #e14d4d !important;
-  border: none;
-}
-
-.btn-danger:hover {
-  background-color: #c0392b !important;
-}
-
-/* Image thumbnail */
+/* ====== Gambar ====== */
 .img-thumbnail {
-  border: none;
-  transition: 0.2s;
+  height: 70px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid var(--pale-blue);
 }
 
-.img-thumbnail:hover {
+/* ====== Tombol Aksi ====== */
+.btn-action {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.btn-edit {
+  background: var(--blue-gray);
+  color: #fff;
+}
+
+.btn-edit:hover {
+  background: var(--dark-navy);
   transform: scale(1.05);
 }
 
-/* Table responsiveness tweak */
-.table-responsive {
-  overflow-x: auto;
-  border-radius: 8px;
+.btn-delete {
+  background: #dc3545;
+  color: #fff;
 }
 
+.btn-delete:hover {
+  background: #a82d38;
+  transform: scale(1.05);
+}
+
+/* ====== Responsif ====== */
+@media (max-width: 768px) {
+  .page-header h2 {
+    font-size: 1.5rem;
+  }
+  td, th {
+    font-size: 13px;
+  }
+}
