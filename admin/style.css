@@ -1,8 +1,7 @@
-/* ===================================
-   Admin Panel Styling - Batik Wistara
-   =================================== */
+/* ================================
+   ✨ Batik Wistara Admin Styling ✨
+   ================================ */
 
-/* 🎨 Palet Warna */
 :root {
   --dark-navy: #071739;
   --blue-gray: #4B6382;
@@ -12,98 +11,131 @@
   --soft-gold: #E3C39D;
 }
 
-/* ====== Layout Umum ====== */
+/* ===== Layout & Typography ===== */
 body {
-  background: var(--pale-blue);
+  background: linear-gradient(180deg, var(--pale-blue), #f8f9fa);
   font-family: 'Poppins', sans-serif;
   color: var(--dark-navy);
+  font-size: 15px;
 }
 
+/* ===== Header Halaman ===== */
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
-  padding: 20px 0;
-  border-bottom: 4px solid var(--warm-tan);
+  background: linear-gradient(90deg, var(--dark-navy), var(--blue-gray));
+  padding: 20px 30px;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 5px 20px rgba(7, 23, 57, 0.25);
+  margin-bottom: 25px;
 }
 
 .page-header h2 {
-  color: var(--dark-navy);
   font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .page-header i {
-  color: var(--warm-tan);
+  color: var(--soft-gold);
   margin-right: 10px;
 }
 
-/* ====== Tombol ====== */
 .btn-add {
   background: var(--soft-gold);
   color: var(--dark-navy);
-  border: none;
   font-weight: 600;
+  border: none;
   border-radius: 10px;
+  padding: 8px 16px;
   transition: all 0.3s ease;
 }
 
 .btn-add:hover {
-  background: var(--dark-navy);
+  background: var(--warm-tan);
   color: white;
-  transform: translateY(-2px);
+  transform: scale(1.05);
 }
 
-/* ====== Tabel ====== */
+/* ===== Table Container ===== */
 .table-container {
-  background: white;
+  background: #fff;
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 10px 25px rgba(7, 23, 57, 0.15);
 }
 
+/* ===== Table Style ===== */
 table {
-  border-radius: 10px;
-  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  width: 100%;
 }
 
-thead {
-  background: var(--dark-navy);
+thead th {
+  background: linear-gradient(90deg, var(--dark-navy), var(--blue-gray));
   color: white;
-  font-size: 15px;
+  text-align: center;
+  font-weight: 600;
+  border: none;
+  padding: 14px 12px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 tbody tr {
-  transition: all 0.2s ease-in-out;
+  background: #ffffff;
+  box-shadow: 0 3px 12px rgba(7, 23, 57, 0.08);
+  transition: all 0.25s ease-in-out;
 }
 
 tbody tr:hover {
-  background-color: #f9f9f9;
-  transform: scale(1.005);
+  transform: scale(1.01);
+  box-shadow: 0 8px 18px rgba(7, 23, 57, 0.15);
+  background-color: var(--pale-blue);
 }
 
-td, th {
-  vertical-align: middle;
+tbody td {
+  padding: 16px 14px;
   text-align: center;
-  padding: 15px !important;
+  vertical-align: middle;
+  border: none;
+  color: var(--dark-navy);
 }
 
-/* ====== Gambar ====== */
+tbody td:first-child {
+  font-weight: 600;
+  color: var(--dark-navy);
+}
+
+/* ===== Gambar ===== */
 .img-thumbnail {
+  width: 90px;
   height: 70px;
-  width: 100px;
   object-fit: cover;
-  border-radius: 10px;
-  border: 2px solid var(--pale-blue);
+  border-radius: 12px;
+  border: 2px solid var(--soft-gold);
+  box-shadow: 0 4px 10px rgba(7, 23, 57, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ====== Tombol Aksi ====== */
+.img-thumbnail:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(7, 23, 57, 0.3);
+}
+
+/* ===== Tombol Aksi ===== */
 .btn-action {
   border: none;
   padding: 6px 12px;
   border-radius: 8px;
   font-size: 14px;
+  font-weight: 500;
   transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .btn-edit {
@@ -117,21 +149,44 @@ td, th {
 }
 
 .btn-delete {
-  background: #dc3545;
-  color: #fff;
+  background: #e74c3c;
+  color: white;
 }
 
 .btn-delete:hover {
-  background: #a82d38;
+  background: #c0392b;
   transform: scale(1.05);
 }
 
-/* ====== Responsif ====== */
-@media (max-width: 768px) {
-  .page-header h2 {
-    font-size: 1.5rem;
-  }
-  td, th {
-    font-size: 13px;
-  }
+/* ===== Link dalam Deskripsi ===== */
+.text-primary {
+  color: var(--blue-gray) !important;
+  font-weight: 500;
 }
+
+.text-primary:hover {
+  color: var(--dark-navy) !important;
+  text-decoration: underline;
+}
+
+/* ===== Scrollbar (untuk tabel panjang) ===== */
+.table-responsive::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: var(--pale-blue);
+  border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--blue-gray);
+  border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-navy);
+}
+
+/* ===== Responsif ===== */
+@media (max
