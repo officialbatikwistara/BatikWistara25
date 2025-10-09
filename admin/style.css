@@ -112,123 +112,135 @@ button[type="submit"]:active {
   }
 }
 
-/* ======= FIX: Table Layout & Image Size ======= */
+<style>
+/* ===========================
+   TABLE - DAFTAR BERITA (Booksaw Style)
+=========================== */
+.table-container {
+  background-color: #fffaf3;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  margin-top: 40px;
+}
+
+.table-container h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #1a2247;
+  margin-bottom: 30px;
+  font-size: 32px;
+}
+
+/* Tombol tambah berita */
+.btn-tambah {
+  background-color: #ac7b32;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-tambah:hover {
+  background-color: #1a2247;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Tabel utama */
 .table-booksaw {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; /* Penting supaya kolom tidak melebar */
-  font-size: 15px;
-}
-
-.table-booksaw th,
-.table-booksaw td {
-  padding: 12px 14px;
-  border-bottom: 1px solid #e0d8c3;
-  vertical-align: top;
-  word-wrap: break-word; /* Biar teks panjang nggak keluar tabel */
-  text-align: left;
-}
-
-.table-booksaw thead {
-  background-color: #1a2247;
-  color: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #fff;
+  font-size: 16px;
 }
 
 .table-booksaw th {
-  text-align: center;
+  background-color: #1a2247;
+  color: white;
+  padding: 16px;
+  text-align: left;
   font-weight: 600;
+  font-size: 15px;
 }
 
-/* Atur proporsi kolom */
-.table-booksaw th:nth-child(1),
-.table-booksaw td:nth-child(1) {
-  width: 18%;
+.table-booksaw td {
+  padding: 14px 16px;
+  vertical-align: middle;
+  border-bottom: 1px solid #eee4d2;
+  color: #333;
 }
 
-.table-booksaw th:nth-child(2),
-.table-booksaw td:nth-child(2) {
-  width: 40%;
+.table-booksaw tr:hover {
+  background-color: #fff7eb;
+  transition: background 0.25s ease;
 }
 
-.table-booksaw th:nth-child(3),
-.table-booksaw td:nth-child(3) {
-  width: 10%;
-  text-align: center;
-}
-
-.table-booksaw th:nth-child(4),
-.table-booksaw td:nth-child(4) {
-  width: 17%;
-  text-align: center;
-}
-
-.table-booksaw th:nth-child(5),
-.table-booksaw td:nth-child(5) {
-  width: 15%;
-  text-align: center;
-}
-
-/* Gambar di tabel */
-.table-booksaw td img.img-thumb {
-  width: 100px;
+/* Gambar dalam tabel */
+.table-booksaw img {
+  width: 70px;
   height: 70px;
   object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  border: 2px solid #f2e4cf;
+  transition: all 0.3s ease;
 }
 
-/* Tombol aksi */
-.btn-action {
-  display: inline-block;
-  padding: 6px 10px;
-  margin: 2px;
-  border-radius: 6px;
-  font-size: 13px;
-  text-decoration: none;
-  transition: 0.2s;
+.table-booksaw img:hover {
+  transform: scale(1.05);
+  border-color: #ac7b32;
 }
 
+/* Tombol edit & hapus */
 .btn-edit {
-  background-color: #f1b93e;
-  color: #000;
+  background-color: #f4c542;
+  color: #222;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  margin-right: 5px;
+  transition: all 0.25s ease;
 }
 
 .btn-edit:hover {
-  background-color: #dca932;
-  color: #fff;
+  background-color: #e0b72f;
+  transform: translateY(-2px);
 }
 
-.btn-delete {
-  background-color: #e14d4d;
-  color: #fff;
-}
-
-.btn-delete:hover {
-  background-color: #c0392b;
-}
-
-/* Link "Baca Selengkapnya" */
-.link-more {
-  color: #ac7b32;
-  font-weight: 500;
-  text-decoration: none;
+.btn-hapus {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
   font-size: 14px;
+  transition: all 0.25s ease;
 }
 
-.link-more:hover {
+.btn-hapus:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Link baca selengkapnya */
+.table-booksaw a {
+  color: #ac7b32;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.table-booksaw a:hover {
   color: #1a2247;
   text-decoration: underline;
 }
-
-/* Responsive: di layar kecil */
-@media (max-width: 768px) {
-  .table-booksaw {
-    font-size: 13px;
-  }
-
-  .table-booksaw td img.img-thumb {
-    width: 80px;
-    height: 60px;
-  }
-}
-
+</style>
