@@ -36,7 +36,4 @@
   </div>
 </section>
 
-<!-- tambahkan Font Awesome di <head> -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
 <?php include 'inc/footer.php'; ?>
