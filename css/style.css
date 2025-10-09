@@ -2,12 +2,12 @@
 HEADER
 ========================== */
 
-body{
+body {
   font-family: "Cabin", sans-serif;
   padding-top: 80px;
 }
 
-a, p{
+a, p {
   font-family: "Cabin", sans-serif;
 }
 
@@ -16,13 +16,15 @@ h1, h2, h3, h4, h5 {
   font-weight: 700;
   letter-spacing: 1px;
 }
-/* Warna emas */
+
+/* Warna aksen emas lembut dari palet */
 .text-gold {
-  color: #ac7b32;
+  color: #E3C39D;
 }
 
+/* Warna teks gelap */
 .text-dark {
-  color: #1a2247 !important;
+  color: #071739 !important;
 }
 
 
@@ -36,27 +38,27 @@ Navbar Styling
   background-repeat: no-repeat;
 }
 
-/* Ubah warna teks semua nav-link */
+/* Warna teks semua nav-link */
 .navbar .nav-link {
   font-family: "Cabin", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #1a2247 !important; 
+  color: #071739 !important;
 }
 
 /* Warna teks saat hover */
 .navbar .nav-link:hover {
-  color: #ac7b32 !important; /* Putih saat di-hover */
+  color: #E3C39D !important;
 }
 
 /* Warna teks link yang sedang aktif */
 .navbar .nav-link.active {
-  color: #ac7b32 !important;
+  color: #E3C39D !important;
   font-weight: bold;
 }
 
-/* ⛔ Perbaiki overflow horizontal di navbar */
+/* Responsive Navbar */
 @media (max-width: 767.98px) {
   html, body {
     overflow-x: hidden;
@@ -95,7 +97,7 @@ Navbar Styling
 TENTANG KAMI INDEX
 ========================== */
 .section-about-img {
-  background-image: url('../img/bg-section1.png'); /* Ganti dengan path gambar kamu */
+  background-image: url('../img/bg-section1.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -109,7 +111,7 @@ TENTANG KAMI INDEX
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background-color: #00000080; /* Overlay gelap agar teks terbaca */
+  background-color: rgba(7, 23, 57, 0.7);
   z-index: 1;
 }
 
@@ -118,7 +120,7 @@ TENTANG KAMI INDEX
   z-index: 2;
   max-width: 800px;
   margin: 0 auto;
-  color: #fff;
+  color: #CDD5DB;
 }
 
 .container-about-img h2 {
@@ -129,7 +131,7 @@ TENTANG KAMI INDEX
 .divider {
   width: 60px;
   height: 3px;
-  background-color: #f1c40f;
+  background-color: #E3C39D;
   margin: 0 auto 30px auto;
   border: none;
 }
@@ -137,14 +139,14 @@ TENTANG KAMI INDEX
 .about-text {
   font-size: 1.125rem;
   line-height: 1.8;
-  color: #eee;
+  color: #CDD5DB;
   margin-bottom: 30px;
 }
 
 .about-button {
   display: inline-block;
-  background-color: #f1c40f;
-  color: #000;
+  background-color: #E3C39D;
+  color: #071739;
   padding: 12px 28px;
   border-radius: 50px;
   text-decoration: none;
@@ -153,133 +155,67 @@ TENTANG KAMI INDEX
 }
 
 .about-button:hover {
-  background-color: #d4ac0d;
+  background-color: #A68868;
   color: #fff;
 }
 
 /* ==========================
 BERITA INDEX
 ========================== */
-/* ===== Section Berita Terkini ===== */
 .section-berita {
   padding: 60px 20px;
-  background-image: url('img/bg-section2.png');
+  background-color: #A4B5C4;
   font-family: 'Poppins', sans-serif;
-}
-
-.container-berita {
-  max-width: 1200px;
-  margin: auto;
 }
 
 .berita-title {
   font-size: 32px;
   text-align: center;
+  color: #071739;
   margin-bottom: 10px;
 }
 
 .berita-divider {
   width: 80px;
   height: 3px;
-  background-color: #5D4037;
+  background-color: #E3C39D;
   margin: 0 auto 40px auto;
   border: none;
 }
 
-/* Grid */
-.berita-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 24px;
-}
-
-/* Card */
+/* Card Berita */
 .berita-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   background-color: #fff;
-  border: 1px solid #ddd;
+  border: 1px solid #CDD5DB;
   border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  padding: 16px;
+  box-shadow: 0 4px 12px rgba(7, 23, 57, 0.1);
   transition: transform 0.2s;
-  height: 100%;
 }
 
 .berita-card:hover {
   transform: translateY(-3px);
 }
 
-/* Gambar */
-.berita-img-wrapper {
-  position: relative;
-  overflow: hidden;
-  border-radius: 6px;
-}
-
-.berita-img-wrapper img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.berita-sumber-overlay {
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  font-size: 12px;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-
-/* Judul */
-.berita-judul {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 12px 0 6px;
-}
-
-/* Deskripsi 3 baris maksimal */
+/* Teks */
 .berita-deskripsi {
-  color: #555;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 16px;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: #4B6382;
 }
 
 /* Link */
 .berita-link {
-  margin-top: auto;
-  color: #5D4037;
-      font-weight: 700;
+  color: #A68868;
+  font-weight: 700;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .berita-link:hover {
-  color: #dfbe02;
+  color: #E3C39D;
 }
 
 /* Tombol Lihat Semua */
-.berita-footer {
-  text-align: center;
-  margin-top: 40px;
-}
-
 .btn-lihat-semua {
-  display: inline-block;
-  background-color: #5D4037;
+  background-color: #4B6382;
   color: #fff;
   padding: 10px 20px;
   border-radius: 8px;
@@ -289,38 +225,14 @@ BERITA INDEX
 }
 
 .btn-lihat-semua:hover {
-  background-color: #3E2723;
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 600px) {
-  .berita-title {
-    font-size: 26px;
-  }
-
-  .berita-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .berita-deskripsi {
-    font-size: 13px;
-  }
-}
-
-/* ==========================
-PAGE DETAIL BERITA
-========================== */
-.berita-isi {
-  font-size: 16px;
-  line-height: 1.8;
-  text-align: justify;
+  background-color: #071739;
 }
 
 /* ==========================
 LOGIN PAGE
 ========================== */
 .login-container {
-  background-image: url('/img/bg-section2.png');
+  background-color: #A4B5C4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -330,68 +242,43 @@ LOGIN PAGE
 .login-box {
   background: #fff;
   padding: 40px 35px;
-  width: 100%;
   max-width: 400px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(7, 23, 57, 0.15);
 }
 
 .login-box h2 {
-    text-align: center;
-    color: #8B4513;
-    margin-bottom: 25px;
-    font-weight: bold;
+  text-align: center;
+  color: #4B6382;
+  margin-bottom: 25px;
+  font-weight: bold;
 }
 
-  .login-box input {
-    width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 18px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-    transition: 0.2s;
-  }
+.login-box input {
+  border: 1px solid #CDD5DB;
+}
 
-  .login-box input:focus {
-    border-color: #8B4513;
-    outline: none;
-    box-shadow: 0 0 6px rgba(139, 69, 19, 0.3);
-  }
+.login-box input:focus {
+  border-color: #4B6382;
+  box-shadow: 0 0 6px rgba(75, 99, 130, 0.3);
+}
 
-  .login-box button {
-    width: 100%;
-    padding: 12px;
-    background-color: #8B4513;
-    color: #fff;
-    border: none;
-    font-weight: bold;
-    border-radius: 6px;
-    font-size: 16px;
-    transition: background 0.3s;
-  }
+.login-box button {
+  background-color: #A68868;
+}
 
 .login-box button:hover {
-    background-color: #5c3310;
-}
-
-.error-msg {
-    background-color: #fdd;
-    color: #b10000;
-    padding: 10px 15px;
-    margin-bottom: 15px;
-    border-left: 4px solid #b10000;
-    border-radius: 4px;
-    font-size: 14px;
+  background-color: #4B6382;
 }
 
 /* ==========================
 FOOTER
 ========================== */
 footer a:hover {
-  color: #ac7b32 !important;
+  color: #E3C39D !important;
   text-decoration: underline;
 }
+
 
 .email-popup {
   display: none;
