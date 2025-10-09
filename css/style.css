@@ -47,7 +47,6 @@ h1, h2, h3, h4, h5 {
   color: #1a2247 !important;
 }
 
-
 /* ==========================
 Navbar Styling 
 ========================== */
@@ -111,6 +110,100 @@ Navbar Styling
   .navbar-brand img {
     max-width: 50px;
   }
+}
+
+/* ==========================
+HERO SECTION (BERANDA)
+========================== */
+
+.bg-light {
+  background: linear-gradient(135deg, #f9f5ef 0%, #f3e3cf 100%) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Tambahkan sedikit pola halus (optional, bisa dihapus jika tidak pakai background motif) */
+.bg-light::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url('../img/bg-pattern-batik.png'); /* opsional: pola batik lembut */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.08;
+  z-index: 1;
+}
+
+/* Atur kontainer supaya elemen tidak ketimpa overlay */
+.bg-light .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Judul dan teks */
+.bg-light h1 {
+  color: #1a2247; /* biru gelap khas Wistara */
+  font-family: "Libre Caslon Text", serif;
+  font-weight: 700;
+}
+
+.bg-light h1 span {
+  color: #ac7b32; /* warna emas */
+}
+
+.bg-light p {
+  color: #4b6382; /* navy muda */
+  font-family: "Cabin", sans-serif;
+  line-height: 1.8;
+}
+
+/* Tombol katalog */
+.bg-light .btn-dark {
+  background-color: #ac7b32; /* emas */
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.bg-light .btn-dark:hover {
+  background-color: #1a2247; /* biru gelap */
+  color: #fff;
+}
+
+/* Gambar logo */
+.bg-light img {
+  max-height: 400px;
+  transition: transform 0.4s ease;
+}
+
+.bg-light img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .bg-light h1 {
+    font-size: 1.9rem;
+  }
+  .bg-light p {
+    font-size: 1rem;
+  }
+}
+
+.hero-logo {
+  max-height: 400px;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero-logo.appear {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ==========================
@@ -680,3 +773,10 @@ footer a:hover {
     margin-bottom: 1rem;
   }
 }
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const logo = document.querySelector('.hero-logo');
+  setTimeout(() => logo.classList.add('appear'), 300);
+});
+</script>
