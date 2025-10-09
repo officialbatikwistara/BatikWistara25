@@ -69,5 +69,4 @@
   </div>
 </section>
 
-<?php include './partials/footer.php'; ?>
 <?php include 'inc/footer.php'; ?>
