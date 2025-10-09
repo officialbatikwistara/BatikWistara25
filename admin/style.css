@@ -111,3 +111,126 @@ button[type="submit"]:active {
     padding: 30px 25px;
   }
 }
+
+/* ================================
+   ADMIN BERITA PAGE (BOOKSAW STYLE)
+=================================== */
+.admin-page {
+  background-color: #f8f5ef;
+  min-height: 100vh;
+  padding: 60px 0;
+}
+
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 40px 50px;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.admin-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #1a2247;
+}
+
+.btn-add {
+  background-color: #ac7b32;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-add:hover {
+  background-color: #1a2247;
+  color: #fff;
+}
+
+/* Table Style */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.table-booksaw {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.table-booksaw thead {
+  background-color: #1a2247;
+  color: #fff;
+}
+
+.table-booksaw th, .table-booksaw td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #e0d8c3;
+  vertical-align: middle;
+}
+
+.table-booksaw tbody tr:hover {
+  background-color: #f9f5ec;
+}
+
+.table-booksaw td img.img-thumb {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Link & Button Styles */
+.link-more {
+  color: #ac7b32;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link-more:hover {
+  color: #1a2247;
+  text-decoration: underline;
+}
+
+.btn-action {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.btn-edit {
+  background-color: #f1b93e;
+  color: #000;
+  margin-right: 6px;
+}
+
+.btn-edit:hover {
+  background-color: #e3a72e;
+  color: #fff;
+}
+
+.btn-delete {
+  background-color: #e14d4d;
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
