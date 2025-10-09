@@ -780,49 +780,70 @@ footer a:hover {
 /* ==== Kontak Kami ==== */
 .kontak-container {
   background-color: #fffaf3;
-  padding: 50px 20px;
+  padding: 70px 20px;
   text-align: center;
+  font-family: "Poppins", sans-serif;
 }
 
 .kontak-container h2 {
-  font-size: 2rem;
-  margin-bottom: 30px;
-  color: #333;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #2c2c54;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
+.kontak-container h2 i {
+  color: #a67b5b;
+}
+
+/* kotak utama */
 .kontak-box {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
 }
 
+/* tiap item kontak */
 .kontak-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   background-color: #fff;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 25px 30px;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.kontak-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .kontak-item i {
   font-size: 1.8rem;
   color: #a67b5b;
-  margin-right: 15px;
-  min-width: 40px;
+  margin-right: 18px;
+  margin-top: 5px;
+  min-width: 35px;
   text-align: center;
 }
 
 .kontak-item h4 {
   margin: 0;
   font-size: 1.1rem;
-  color: #333;
+  color: #2c2c54;
+  margin-bottom: 5px;
 }
 
 .kontak-item p,
 .kontak-item a {
+  font-size: 0.95rem;
   color: #555;
   text-decoration: none;
 }
@@ -831,7 +852,17 @@ footer a:hover {
   color: #a67b5b;
 }
 
+/* Responsif */
+@media (max-width: 600px) {
+  .kontak-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
+  .kontak-item i {
+    margin-bottom: 10px;
+  }
+}
 
 /* FOOTER RESPONSIVE UNTUK MOBILE */
 @media (max-width: 600px) {
