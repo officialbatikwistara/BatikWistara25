@@ -19,7 +19,6 @@ ADMIN - TAMBAH BERITA PAGE
   letter-spacing: 1px;
 }
 
-/* Grid form */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -51,7 +50,6 @@ ADMIN - TAMBAH BERITA PAGE
 }
 
 textarea {
-  min-height: 120px;
   resize: vertical;
 }
 
@@ -69,12 +67,6 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #1a2247;
-}
-
-/* Buat tombol dan kolom file upload tampil rapi */
-input[type="file"] {
-  padding: 6px;
-  background: #fff;
 }
 
 /* Responsive form */

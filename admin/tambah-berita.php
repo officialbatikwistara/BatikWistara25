@@ -24,7 +24,6 @@ if (isset($_POST['simpan_berita'])) {
   $gambar_link   = mysqli_real_escape_string($conn, $_POST['gambar_url']);
   $gambar_final  = '';
 
-  // Cek apakah user upload gambar atau pakai link
   if (!empty($_FILES['gambar']['name'])) {
     $gambar   = $_FILES['gambar']['name'];
     $tmp      = $_FILES['gambar']['tmp_name'];
@@ -50,35 +49,54 @@ if (isset($_POST['simpan_berita'])) {
 }
 ?>
 
+<div class="form-container">
+  <h1>Tambah Berita</h1>
 
-<h2>Tambah Berita</h2>
+  <form action="" method="POST" enctype="multipart/form-data" class="form-grid">
+    <div>
+      <label>Judul</label>
+      <input type="text" name="judul" required>
+    </div>
 
-<form action="" method="POST" enctype="multipart/form-data">
-    <label>Judul</label>
-    <input type="text" name="judul" required>
+    <div>
+      <label>Deskripsi Singkat</label>
+      <textarea name="deskripsi" rows="3" required></textarea>
+    </div>
 
-    <label>Deskripsi Singkat</label>
-    <textarea name="deskripsi" rows="3" required></textarea>
+    <div style="grid-column: span 2;">
+      <label>Isi Berita (boleh kosong jika eksternal)</label>
+      <textarea name="isi_berita" rows="6"></textarea>
+    </div>
 
-    <label>Isi Berita (boleh kosong jika eksternal)</label>
-    <textarea name="isi_berita" rows="6"></textarea>
+    <div>
+      <label>Upload Gambar (opsional)</label>
+      <input type="file" name="gambar">
+    </div>
 
-    <label>Upload Gambar (opsional)</label>
-    <input type="file" name="gambar">
+    <div>
+      <label>Link Gambar (jika eksternal)</label>
+      <input type="url" name="gambar_url" placeholder="https://...">
+    </div>
 
-    <label>Link Gambar (jika eksternal)</label>
-    <input type="url" name="gambar_url" placeholder="https://...">
+    <div>
+      <label>Tanggal</label>
+      <input type="date" name="tanggal" required>
+    </div>
 
-    <label>Tanggal</label>
-    <input type="date" name="tanggal" required>
+    <div>
+      <label>Sumber Berita (opsional)</label>
+      <input type="text" name="sumber">
+    </div>
 
-    <label>Sumber Berita (opsional)</label>
-    <input type="text" name="sumber">
+    <div style="grid-column: span 2;">
+      <label>Tautan Sumber (opsional)</label>
+      <input type="url" name="tautan_sumber" placeholder="https://...">
+    </div>
 
-    <label>Tautan Sumber (opsional)</label>
-    <input type="url" name="tautan_sumber" placeholder="https://...">
-
-    <button type="submit" name="simpan_berita">Simpan</button>
-</form>
+    <div style="grid-column: span 2; text-align: center;">
+      <button type="submit" name="simpan_berita">Simpan</button>
+    </div>
+  </form>
+</div>
 
 <?php include 'footer.php'; ?>
