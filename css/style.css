@@ -778,58 +778,115 @@ footer a:hover {
 }
 
 /* ===== KONTAK KAMI ===== */
+
 .kontak-section {
-  background: linear-gradient(135deg, #CDD5DB, #A4B5C4);
-  color: #071739;
-}
-
-/* warna utama dari palet */
-.text-primary {
-  color: #071739 !important;
-}
-.text-accent {
-  color: #A68868 !important;
-}
-.text-dark {
-  color: #071739 !important;
-}
-
-/* tombol utama */
-.btn-accent {
-  background-color: #A68868;
+  position: relative;
+  background: linear-gradient(135deg, #071739 0%, #4B6382 50%, #A68868 100%);
   color: #fff;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 25px;
-  transition: 0.3s;
-}
-.btn-accent:hover {
-  background-color: #4B6382;
-  color: #fff;
+  padding: 80px 0;
+  overflow: hidden;
 }
 
-/* kartu kontak */
+/* pola transparan lembut */
+.overlay-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: 0;
+}
+
+.kontak-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.kontak-section h2 {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  color: #E3C39D;
+}
+
+.subtext {
+  color: #CDD5DB;
+  font-size: 1.1rem;
+}
+
+/* Kartu kontak */
 .kontak-card {
-  background-color: #FFFFFF;
-  border-radius: 15px;
-  transition: all 0.3s ease;
-}
-.kontak-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(7, 23, 57, 0.15);
+  background: #fff;
+  color: #071739;
+  border-radius: 20px;
+  padding: 35px 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+  height: 100%;
 }
 
-/* link alamat */
-.alamat-link {
+.kontak-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Ikon bulat gradasi */
+.icon-wrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.bg-gradient-blue {
+  background: linear-gradient(135deg, #4B6382, #A4B5C4);
+}
+
+.bg-gradient-green {
+  background: linear-gradient(135deg, #4B6382, #CDD5DB);
+}
+
+.bg-gradient-gold {
+  background: linear-gradient(135deg, #A68868, #E3C39D);
+}
+
+/* Link */
+.kontak-link {
   color: #4B6382;
+  text-decoration: none;
   font-weight: 500;
+  display: inline-block;
   transition: 0.3s;
 }
-.alamat-link:hover {
+.kontak-link:hover {
   color: #A68868;
   text-decoration: underline;
 }
 
+/* Tombol */
+.btn-accent {
+  background: linear-gradient(135deg, #A68868, #E3C39D);
+  color: #071739;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+.btn-accent:hover {
+  background: linear-gradient(135deg, #4B6382, #A4B5C4);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* Responsif */
 @media (max-width: 768px) {
   .kontak-card {
     margin-bottom: 20px;
