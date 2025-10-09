@@ -112,135 +112,93 @@ button[type="submit"]:active {
   }
 }
 
-<style>
-/* ===========================
-   TABLE - DAFTAR BERITA (Booksaw Style)
-=========================== */
-.table-container {
-  background-color: #fffaf3;
-  padding: 40px;
-  border-radius: 18px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-  margin-top: 40px;
+/* ===== Modern Bootstrap Admin Table Style ===== */
+body {
+  background-color: #f8f9fa !important;
+  font-family: "Poppins", sans-serif;
 }
 
-.table-container h2 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
+/* Heading */
+h2 {
   color: #1a2247;
-  margin-bottom: 30px;
-  font-size: 32px;
+  letter-spacing: 0.5px;
 }
 
-/* Tombol tambah berita */
-.btn-tambah {
-  background-color: #ac7b32;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 10px;
-  font-weight: 600;
-  transition: all 0.25s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+/* Card styling */
+.card {
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
 }
 
-.btn-tambah:hover {
-  background-color: #1a2247;
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-/* Tabel utama */
-.table-booksaw {
-  width: 100%;
-  border-collapse: collapse;
-  border-radius: 14px;
-  overflow: hidden;
-  background-color: #fff;
-  font-size: 16px;
-}
-
-.table-booksaw th {
-  background-color: #1a2247;
-  color: white;
-  padding: 16px;
-  text-align: left;
-  font-weight: 600;
+/* Table modern look */
+.table-modern {
   font-size: 15px;
-}
-
-.table-booksaw td {
-  padding: 14px 16px;
-  vertical-align: middle;
-  border-bottom: 1px solid #eee4d2;
   color: #333;
 }
 
-.table-booksaw tr:hover {
-  background-color: #fff7eb;
-  transition: background 0.25s ease;
-}
-
-/* Gambar dalam tabel */
-.table-booksaw img {
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
-  border-radius: 10px;
-  border: 2px solid #f2e4cf;
-  transition: all 0.3s ease;
-}
-
-.table-booksaw img:hover {
-  transform: scale(1.05);
-  border-color: #ac7b32;
-}
-
-/* Tombol edit & hapus */
-.btn-edit {
-  background-color: #f4c542;
-  color: #222;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
+.table-modern thead {
+  background-color: #1a2247 !important;
+  color: #fff !important;
   font-weight: 600;
-  font-size: 14px;
-  margin-right: 5px;
-  transition: all 0.25s ease;
 }
 
-.btn-edit:hover {
-  background-color: #e0b72f;
-  transform: translateY(-2px);
+.table-modern tbody tr:hover {
+  background-color: #f3f6ff !important;
+  transition: 0.2s ease;
 }
 
-.btn-hapus {
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 14px;
-  transition: all 0.25s ease;
-}
-
-.btn-hapus:hover {
-  background-color: #c0392b;
-  transform: translateY(-2px);
-}
-
-/* Link baca selengkapnya */
-.table-booksaw a {
-  color: #ac7b32;
+/* Links */
+.link-baca {
+  color: #007bff;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
 }
 
-.table-booksaw a:hover {
-  color: #1a2247;
+.link-baca:hover {
   text-decoration: underline;
 }
-</style>
+
+/* Button styling */
+.btn {
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-warning {
+  background-color: #f4b000 !important;
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: #d99a00 !important;
+}
+
+.btn-danger {
+  background-color: #e14d4d !important;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b !important;
+}
+
+/* Image thumbnail */
+.img-thumbnail {
+  border: none;
+  transition: 0.2s;
+}
+
+.img-thumbnail:hover {
+  transform: scale(1.05);
+}
+
+/* Table responsiveness tweak */
+.table-responsive {
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
