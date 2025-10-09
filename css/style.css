@@ -277,55 +277,85 @@ TENTANG KAMI INDEX
 BERITA INDEX
 ========================== */
 /* ===== Section Berita Terkini ===== */
-.section-berita {
-  padding: 60px 20px;
-  background-image: url('img/bg-section2.png');
-  font-family: 'Poppins', sans-serif;
+/* === Bagian Berita Terkini === */
+.berita-section {
+  background: linear-gradient(180deg, #faf6f0 0%, #fff 100%);
+  padding: 80px 0;
+  position: relative;
 }
 
-.container-berita {
-  max-width: 1200px;
-  margin: auto;
+.berita-section::before {
+  content: "";
+  background-image: url('../img/bg-batik-pattern.png'); /* opsional, kalau ada pola batik */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.05;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
-.berita-title {
-  font-size: 32px;
+.berita-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Judul */
+.berita-section h2 {
+  color: #1e2a44;
+  font-weight: 700;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
+  font-size: 2.4rem;
+  position: relative;
+  display: inline-block;
 }
 
-.berita-divider {
+.berita-section h2::after {
+  content: "";
+  display: block;
   width: 80px;
   height: 3px;
-  background-color: #5D4037;
-  margin: 0 auto 40px auto;
-  border: none;
+  background: #caa552;
+  margin: 12px auto 0;
+  border-radius: 2px;
 }
 
-/* Grid */
-.berita-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 24px;
-}
-
-/* Card */
+/* Card Berita */
 .berita-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  background: #ffffff;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  padding: 16px;
-  transition: transform 0.2s;
-  height: 100%;
+  transition: all 0.3s ease;
 }
 
 .berita-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.berita-card img {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  height: 220px;
+  object-fit: cover;
+}
+
+.berita-card .card-body {
+  padding: 20px;
+}
+
+.berita-card h5 {
+  color: #1e2a44;
+  font-weight: 700;
+}
+
+.berita-card p {
+  color: #444;
+  font-size: 0.95rem;
 }
 
 /* Gambar */
