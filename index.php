@@ -69,4 +69,22 @@
   </div>
 </section>
 
+<section class="py-5 bg-white text-center fade-section">
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.fade-section').forEach(section => {
+      observer.observe(section);
+    });
+  });
+  </script>
+</section>
+
 <?php include 'inc/footer.php'; ?>

@@ -29,35 +29,32 @@
   </div>
 </section>
 
-<!-- Section Visi & Misi -->
-<section class="visimisi-section py-5">
-  <div class="container text-center">
-    <h3 class="fw-bold mb-4">Visi & Misi Kami</h3>
-    <div class="row">
-
+<!-- Visi & Misi Kami -->
+<section class="py-5 bg-white text-center">
+  <div class="container">
+    <h2 class="fw-bold mb-4">Visi & Misi Kami</h2>
+    <div class="row justify-content-center text-start">
       <!-- Visi -->
-      <div class="col-12 col-md-6 mb-4">
-        <h5>Visi</h5>
-        <p>
-          Menjadi pelopor dalam pelestarian dan inovasi batik Indonesia melalui pendekatan yang modern, inklusif, dan berkelanjutan.
+      <div class="col-md-5 mb-4 mb-md-0">
+        <h4 class="fw-bold text-center mb-3">Visi</h4>
+        <p class="text-center">
+          Menjadi pelopor dalam pelestarian dan inovasi batik Indonesia melalui pendekatan yang modern,
+          inklusif, dan berkelanjutan.
         </p>
       </div>
 
       <!-- Misi -->
-      <div class="col-12 col-md-6 mb-4">
-        <h5>Misi</h5>
-        <ul class="text-start mx-auto" style="max-width: 500px;">
+      <div class="col-md-5">
+        <h4 class="fw-bold text-center mb-3">Misi</h4>
+        <ul>
           <li>Memproduksi batik berkualitas tinggi dengan desain yang elegan dan kontemporer.</li>
           <li>Memberdayakan pengrajin lokal melalui kolaborasi yang adil dan berkelanjutan.</li>
           <li>Mengedukasi masyarakat tentang nilai budaya dan sejarah batik Indonesia.</li>
           <li>Menyediakan platform digital yang mudah diakses untuk promosi dan distribusi produk.</li>
         </ul>
       </div>
-
     </div>
   </div>
 </section>
-
-
 
 <?php include 'inc/footer.php'; ?>
