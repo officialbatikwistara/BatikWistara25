@@ -777,36 +777,57 @@ footer a:hover {
   background-color: #1a2247; /* hover biru tua */
 }
 
-/* ====== KONTAK KAMI STYLE ====== */
+/* ===== KONTAK KAMI ===== */
 .kontak-section {
-  background-color: #F8F9FA; /* lembut */
+  background: linear-gradient(135deg, #CDD5DB, #A4B5C4);
+  color: #071739;
 }
 
-/* warna-warna sesuai palet */
+/* warna utama dari palet */
 .text-primary {
   color: #071739 !important;
 }
 .text-accent {
   color: #A68868 !important;
 }
-.btn-outline-accent {
-  border: 2px solid #A68868;
-  color: #A68868;
-  transition: 0.3s;
-}
-.btn-outline-accent:hover {
-  background-color: #A68868;
-  color: white;
+.text-dark {
+  color: #071739 !important;
 }
 
+/* tombol utama */
+.btn-accent {
+  background-color: #A68868;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  transition: 0.3s;
+}
+.btn-accent:hover {
+  background-color: #4B6382;
+  color: #fff;
+}
+
+/* kartu kontak */
 .kontak-card {
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   border-radius: 15px;
   transition: all 0.3s ease;
 }
 .kontak-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(7, 23, 57, 0.1);
+  box-shadow: 0 6px 15px rgba(7, 23, 57, 0.15);
+}
+
+/* link alamat */
+.alamat-link {
+  color: #4B6382;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.alamat-link:hover {
+  color: #A68868;
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
@@ -814,7 +835,6 @@ footer a:hover {
     margin-bottom: 20px;
   }
 }
-
 
 /* Responsif */
 @media (max-width: 600px) {
