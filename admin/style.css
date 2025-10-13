@@ -13,6 +13,9 @@
   --text-light: #4B6382;
   --primary-blue: #344966;
   --secondary-gold: #c79f67;
+  --table-header-bg: #343a40; /* Warna header baru */
+  --table-border-light: #eaedf1; /* Warna border baru */
+  --table-hover-light: #f8f9fa; /* Warna hover baru */
 }
 
 body {
@@ -47,7 +50,7 @@ body {
 .table-container {
     background: #fff;
     border-radius: 20px;
-    padding: 30px;
+    padding: 20px;
     margin-top: 25px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
@@ -58,18 +61,20 @@ body {
     border-spacing: 0;
     width: 100%;
     table-layout: fixed; /* Memaksa tabel untuk mematuhi lebar yang ditentukan */
+    border-radius: 12px; /* Sudut melengkung untuk seluruh tabel */
+    overflow: hidden; /* Memastikan konten mengikuti sudut melengkung */
 }
 
 /* ===== Header Tabel ===== */
 .modern-table-v2 thead th {
-    background-color: var(--primary-blue);
+    background-color: var(--table-header-bg);
     color: #fff;
-    padding: 20px 20px;
+    padding: 18px 20px;
     font-weight: 600;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    font-size: 14px;
-    text-align: center;
+    font-size: 13px;
+    text-align: left; /* Teks header rata kiri */
 }
 
 /* Pengaturan lebar untuk setiap kolom */
@@ -79,11 +84,11 @@ body {
 .modern-table-v2 th:nth-child(4) { width: 15%; } /* Gambar */
 .modern-table-v2 th:nth-child(5) { width: 15%; } /* Aksi */
 
-.modern-table-v2 thead th:first-child {
-    border-top-left-radius: 12px;
-}
-.modern-table-v2 thead th:last-child {
-    border-top-right-radius: 12px;
+/* Kolom Tanggal, Gambar, Aksi menjadi rata tengah */
+.modern-table-v2 th:nth-child(3),
+.modern-table-v2 th:nth-child(4),
+.modern-table-v2 th:nth-child(5) {
+    text-align: center;
 }
 
 /* ===== Baris dan Sel ===== */
@@ -92,21 +97,28 @@ body {
 }
 
 .modern-table-v2 tbody tr:hover {
-    background-color: #f6f8fc;
+    background-color: var(--table-hover-light);
 }
 
 .modern-table-v2 tbody td {
-    padding: 20px;
+    padding: 18px 20px;
     vertical-align: middle;
     color: var(--text-dark);
     font-weight: 400;
     font-size: 14px;
-    border-bottom: 1px solid #e0e6ed;
+    border-bottom: 1px solid var(--table-border-light);
     word-wrap: break-word; /* Memastikan teks panjang tidak merusak layout */
 }
 
 .modern-table-v2 tbody tr:last-child td {
     border-bottom: none;
+}
+
+/* Kolom Tanggal, Gambar, Aksi menjadi rata tengah */
+.modern-table-v2 tbody td:nth-child(3),
+.modern-table-v2 tbody td:nth-child(4),
+.modern-table-v2 tbody td:nth-child(5) {
+    text-align: center;
 }
 
 /* ===== Kolom Judul & Deskripsi ===== */
@@ -121,13 +133,13 @@ body {
 /* ===== Kotak Gambar & Aksi ===== */
 .image-box,
 .action-box {
-    background-color: #f8f9fa;
+    background-color: transparent;
     border-radius: 10px;
-    padding: 10px;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: none;
 }
 
 .img-in-box {
@@ -212,12 +224,18 @@ body {
         overflow: hidden;
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
+    
+    /* Reset table-layout untuk mobile */
+    .modern-table-v2 {
+        table-layout: auto;
+    }
 
     .modern-table-v2 td {
         padding: 15px;
         padding-left: 40%; /* Buat ruang untuk label */
         position: relative;
         border-bottom: 1px solid #e9eef3;
+        text-align: right !important; /* Paksa rata kanan semua sel di mobile */
     }
 
     .modern-table-v2 td:last-child {
@@ -247,15 +265,9 @@ body {
         width: auto;
         display: inline-flex;
     }
-
-    .modern-table-v2 td.text-start {
-        /* Paksa rata kanan agar konsisten di mobile */
-        text-align: right;
-    }
     
     .img-in-box {
         width: 80px;
         height: 56px;
     }
 }
-
