@@ -1,6 +1,6 @@
-/* ================================
-   ✨ Batik Wistara Admin Styling ✨
-   ================================ */
+/* ==========================
+   ✨ Styling Tabel Berita ✨
+   ========================== */
 
 :root {
   --dark-navy: #071739;
@@ -13,36 +13,69 @@
   --text-light: #4B6382;
 }
 
-/* ===== Global ===== */
-body {
-  background: linear-gradient(180deg, var(--pale-blue), #f8f9fa);
-  font-family: 'Poppins', sans-serif;
-  color: var(--text-dark);
+/* ===== Container Tabel ===== */
+.table-container {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 20px;
+  box-shadow: 0 10px 25px rgba(7, 23, 57, 0.15);
+  overflow-x: auto;
+}
+
+/* ===== Header Tabel ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+}
+
+thead th {
+  background: linear-gradient(90deg, var(--dark-navy), var(--blue-gray));
+  color: #fff;
+  padding: 16px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
   font-size: 15px;
 }
 
-/* ===== Header Halaman ===== */
-.page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(90deg, var(--dark-navy), var(--blue-gray));
-  padding: 20px 30px;
-  border-radius: 15px;
-  color: white;
-  box-shadow: 0 5px 20px rgba(7, 23, 57, 0.25);
-  margin-bottom: 25px;
+/* ===== Body Tabel ===== */
+tbody tr {
+  background-color: #ffffff;
+  transition: all 0.25s ease-in-out;
+  border-bottom: 1px solid #e0e6ed;
 }
 
-.page-header h2 {
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: var(--soft-gold);
+tbody tr:hover {
+  background-color: #f6f8fc;
+  transform: scale(1.01);
 }
 
-.page-header i {
-  color: var(--soft-gold);
-  margin-right: 10px;
+tbody td {
+  padding: 18px 12px;
+  vertical-align: middle;
+  color: var(--text-dark);
+  font-weight: 500;
+  font-size: 15px;
+}
+
+/* ===== Gambar di tabel ===== */
+.img-thumbnail {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid var(--soft-gold);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-thumbnail:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 14px rgba(0,0,0,0.2);
 }
 
 /* ===== Tombol Tambah ===== */
@@ -52,7 +85,7 @@ body {
   font-weight: 600;
   border: none;
   border-radius: 10px;
-  padding: 8px 16px;
+  padding: 10px 18px;
   transition: all 0.3s ease;
 }
 
@@ -62,82 +95,10 @@ body {
   transform: scale(1.05);
 }
 
-/* ===== Table Container ===== */
-.table-container {
-  background: #fff;
-  border-radius: 20px;
-  padding: 25px;
-  box-shadow: 0 10px 25px rgba(7, 23, 57, 0.15);
-  overflow: hidden;
-}
-
-/* ===== Table Style ===== */
-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  border-radius: 15px;
-  overflow: hidden;
-}
-
-/* ===== Header ===== */
-thead th {
-  background: linear-gradient(90deg, #0a1931, #304b75);
-  color: #ffffff;
-  text-align: center;
-  font-weight: 600;
-  padding: 14px 12px;
-  letter-spacing: 0.3px;
-  border: none;
-}
-
-/* Biar header nyatu halus (rounded cuma di ujung kiri-kanan) */
-thead th:first-child {
-  border-top-left-radius: 15px;
-}
-thead th:last-child {
-  border-top-right-radius: 15px;
-}
-
-/* ===== Body ===== */
-tbody tr {
-  background-color: #ffffff;
-  transition: all 0.25s ease-in-out;
-}
-
-tbody tr:hover {
-  background-color: #f0f4fa;
-  transform: scale(1.01);
-}
-
-tbody td {
-  padding: 15px 12px;
-  text-align: center;
-  vertical-align: middle;
-  border-bottom: 1px solid #e0e6ed;
-  color: #2B3A55;
-  font-weight: 500;
-}
-
-/* ===== Gambar ===== */
-.img-thumbnail {
-  width: 85px;
-  height: 70px;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 2px solid #e3c39d;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.img-thumbnail:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
-}
-
 /* ===== Tombol Aksi ===== */
 .btn-action {
   border: none;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
@@ -164,12 +125,12 @@ tbody td {
   transform: scale(1.05);
 }
 
-/* ===== Link "Baca Selengkapnya" ===== */
+/* ===== Link “Baca Selengkapnya” ===== */
 .text-primary {
-  color: #e3c39d !important;
+  color: var(--soft-gold) !important;
   font-weight: 500;
 }
 .text-primary:hover {
-  color: #cfa76e !important;
+  color: var(--warm-tan) !important;
   text-decoration: underline;
 }
