@@ -1,18 +1,18 @@
-/* =========================================
-   ✨ Styling Tabel V4 (Warm Gold Theme) ✨
-   ========================================= */
+/* =============================================
+   ✨ Styling Tabel V5 (Elegant Dark Header) ✨
+   ============================================= */
 
 :root {
-  --theme-gold: #a68868; /* Emas kecoklatan dari gambar */
-  --theme-gold-hover: #917557; /* Versi lebih gelap untuk hover */
-  --theme-dark-blue: #2B3A55; /* Biru tua dari gambar */
-  --theme-bg: #f5f0e9; /* Krem dari latar belakang gambar */
+  --theme-gold: #a68868;
+  --theme-gold-hover: #917557;
+  --theme-dark-blue: #2B3A55;
+  --theme-bg: #f5f0e9;
   --white: #ffffff;
-  --off-white: #f8f9fa;
-  --grey-border: #dee2e6;
+  --grey-border: #e9ecef;
   --text-color: #495057;
-  --danger-red: #e74c3c;
-  --danger-red-hover: #c0392b;
+  --text-color-light: #6c757d;
+  --danger-red: #dc3545;
+  --danger-red-hover: #c82333;
 }
 
 body {
@@ -31,14 +31,13 @@ body {
     color: var(--white);
     font-weight: 600;
     border: none;
-    border-radius: 8px; /* Sudut lebih lembut */
+    border-radius: 8px;
     padding: 12px 24px;
     transition: all 0.3s ease;
 }
 
 .btn-add:hover {
     background: var(--theme-gold-hover);
-    color: var(--white);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
@@ -47,38 +46,40 @@ body {
 .table-container {
     background: var(--white);
     border-radius: 8px;
-    padding: 20px;
+    padding: 0; /* Padding dihilangkan agar tabel menempel */
     margin-top: 25px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 25px rgba(0,0,0,0.07);
+    overflow: hidden; /* Penting agar border-radius pada tabel terlihat */
     border: 1px solid var(--grey-border);
 }
 
 /* ===== Tabel Utama ===== */
 .modern-table-v2 {
-    border-collapse: collapse; /* Menggunakan collapse untuk border yang lebih rapi */
+    border-collapse: collapse;
     width: 100%;
     table-layout: fixed;
 }
 
 /* ===== Header Tabel ===== */
 .modern-table-v2 thead th {
-    background-color: var(--off-white);
-    color: var(--theme-dark-blue);
+    background-color: var(--theme-dark-blue); /* Header biru tua solid */
+    color: var(--white); /* Teks putih */
     padding: 16px 20px;
     font-weight: 600;
     font-size: 13px;
     text-align: left;
-    border-bottom: 2px solid var(--theme-gold); /* Aksen gold di bawah header */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
 }
 
 /* Pengaturan lebar untuk setiap kolom */
-.modern-table-v2 th:nth-child(1) { width: 20%; } /* Judul */
-.modern-table-v2 th:nth-child(2) { width: 35%; } /* Deskripsi */
-.modern-table-v2 th:nth-child(3) { width: 15%; } /* Tanggal */
-.modern-table-v2 th:nth-child(4) { width: 15%; } /* Gambar */
-.modern-table-v2 th:nth-child(5) { width: 15%; } /* Aksi */
+.modern-table-v2 th:nth-child(1) { width: 20%; }
+.modern-table-v2 th:nth-child(2) { width: 35%; }
+.modern-table-v2 th:nth-child(3) { width: 15%; }
+.modern-table-v2 th:nth-child(4) { width: 15%; }
+.modern-table-v2 th:nth-child(5) { width: 15%; }
 
-/* Kolom Tanggal, Gambar, Aksi menjadi rata tengah */
 .modern-table-v2 th:nth-child(3),
 .modern-table-v2 th:nth-child(4),
 .modern-table-v2 th:nth-child(5) {
@@ -88,26 +89,25 @@ body {
 /* ===== Baris dan Sel ===== */
 .modern-table-v2 tbody tr {
     transition: background-color 0.2s ease;
+    border-bottom: 1px solid var(--grey-border);
+}
+
+.modern-table-v2 tbody tr:last-child {
+    border-bottom: none; /* Hapus border di baris terakhir */
 }
 
 .modern-table-v2 tbody tr:hover {
-    background-color: #fbf9f6; /* Hover dengan warna krem yang sangat lembut */
+    background-color: #fbf9f6;
 }
 
 .modern-table-v2 tbody td {
-    padding: 15px 20px; /* Padding lebih ramping */
+    padding: 14px 20px; /* Padding sedikit lebih ramping */
     vertical-align: middle;
     color: var(--text-color);
     font-size: 14px;
-    border-bottom: 1px solid var(--grey-border);
     word-wrap: break-word;
 }
 
-.modern-table-v2 tbody tr:last-child td {
-    border-bottom: none;
-}
-
-/* Kolom Tanggal, Gambar, Aksi menjadi rata tengah */
 .modern-table-v2 tbody td:nth-child(3),
 .modern-table-v2 tbody td:nth-child(4),
 .modern-table-v2 tbody td:nth-child(5) {
@@ -123,12 +123,7 @@ body {
 /* ===== Kotak Gambar & Aksi ===== */
 .image-box,
 .action-box {
-    background-color: transparent;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: none;
 }
 
 .img-in-box {
@@ -154,42 +149,32 @@ body {
 }
 .read-more-link:hover {
     color: var(--theme-dark-blue);
-    text-decoration: underline;
 }
 
 /* ===== Tombol Aksi ===== */
 .action-box .btn-action {
-    padding: 6px 14px;
+    padding: 7px 15px; /* Tombol dibuat solid */
     border-radius: 6px;
     font-size: 13px;
     font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+    color: var(--white);
     transition: all 0.3s ease;
     text-decoration: none;
-    border: 1px solid transparent;
+    border: none;
 }
 
 .btn-edit {
-    background: transparent;
-    border-color: var(--theme-dark-blue);
-    color: var(--theme-dark-blue);
+    background-color: var(--theme-dark-blue);
 }
 .btn-edit:hover {
-    background: var(--theme-dark-blue);
-    color: var(--white);
+    background-color: #222e44;
 }
 
 .btn-delete {
-    background: transparent;
-    border-color: var(--danger-red);
-    color: var(--danger-red);
+    background-color: var(--danger-red);
 }
 .btn-delete:hover {
-    background: var(--danger-red-hover);
-    border-color: var(--danger-red-hover);
-    color: var(--white);
+    background-color: var(--danger-red-hover);
 }
 
 
@@ -208,11 +193,19 @@ body {
         width: 100%;
     }
     
+    .table-container {
+      border: none;
+      box-shadow: none;
+      background: transparent;
+    }
+
     .modern-table-v2 tr {
         margin-bottom: 20px;
         border: 1px solid var(--grey-border);
         border-radius: 8px;
         overflow: hidden;
+        background: var(--white);
+        box-shadow: 0 4px 25px rgba(0,0,0,0.07);
     }
     
     .modern-table-v2 {
@@ -224,6 +217,7 @@ body {
         padding-left: 40%;
         position: relative;
         text-align: right !important;
+        border: none;
         border-bottom: 1px solid var(--grey-border);
     }
 
