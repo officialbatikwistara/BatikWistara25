@@ -1,5 +1,5 @@
 /* ==========================
-   ✨ Styling Tabel Bersih ✨
+   ✨ Styling Tabel V2 ✨
    ========================== */
 
 :root {
@@ -53,7 +53,7 @@ body {
 }
 
 /* ===== Tabel Utama ===== */
-.clean-table {
+.modern-table-v2 {
     border-collapse: separate;
     border-spacing: 0;
     width: 100%;
@@ -62,7 +62,7 @@ body {
 }
 
 /* ===== Header Tabel ===== */
-.clean-table thead th {
+.modern-table-v2 thead th {
     background-color: var(--primary-blue);
     color: #fff;
     padding: 20px 20px;
@@ -73,31 +73,23 @@ body {
     text-align: center;
 }
 
-.clean-table thead th:first-child {
+.modern-table-v2 thead th:first-child {
     border-top-left-radius: 12px;
 }
-.clean-table thead th:last-child {
+.modern-table-v2 thead th:last-child {
     border-top-right-radius: 12px;
 }
 
 /* ===== Baris dan Sel ===== */
-.clean-table tbody tr {
+.modern-table-v2 tbody tr {
     transition: background-color 0.2s ease;
 }
 
-/* Warna latar belakang selang-seling */
-.clean-table tbody tr:nth-child(odd) {
-    background-color: #f9f9f9;
-}
-.clean-table tbody tr:nth-child(even) {
-    background-color: #ffffff;
+.modern-table-v2 tbody tr:hover {
+    background-color: #f6f8fc;
 }
 
-.clean-table tbody tr:hover {
-    background-color: #f0f2f5;
-}
-
-.clean-table tbody td {
+.modern-table-v2 tbody td {
     padding: 20px;
     vertical-align: middle;
     color: var(--text-dark);
@@ -106,30 +98,40 @@ body {
     border-bottom: 1px solid #e0e6ed;
 }
 
-.clean-table tbody tr:last-child td {
+.modern-table-v2 tbody tr:last-child td {
     border-bottom: none;
 }
 
 /* ===== Kolom Judul & Deskripsi ===== */
-.clean-table td.text-start {
+.modern-table-v2 td.text-start {
     text-align: left;
 }
-.clean-table td.fw-semibold {
+.modern-table-v2 td.fw-semibold {
     font-weight: 600;
     color: var(--primary-blue);
 }
 
-/* ===== Gambar di tabel ===== */
-.img-thumbnail.berita-img {
+/* ===== Kotak Gambar & Aksi ===== */
+.image-box,
+.action-box {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.img-in-box {
     width: 100px;
     height: 70px;
     object-fit: cover;
     border-radius: 8px;
-    border: 2px solid var(--secondary-gold);
     transition: transform 0.3s ease;
 }
 
-.img-thumbnail.berita-img:hover {
+.image-box:hover .img-in-box {
     transform: scale(1.08);
 }
 
@@ -146,7 +148,7 @@ body {
 }
 
 /* ===== Tombol Aksi ===== */
-.btn-action {
+.action-box .btn-action {
     padding: 8px 16px;
     border-radius: 8px;
     font-size: 14px;

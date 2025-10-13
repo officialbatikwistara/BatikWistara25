@@ -12,7 +12,7 @@
 
     <div class="table-container shadow-lg">
         <div class="table-responsive">
-            <table class="table clean-table">
+            <table class="table modern-table-v2">
                 <thead>
                     <tr>
                         <th class="text-start">Judul</th>
@@ -44,20 +44,24 @@
                             </td>
                             <td><?= date('d-m-Y', strtotime($row['tanggal'])) ?></td>
                             <td>
-                                <?php
-                                $imgSrc = filter_var($row['gambar'], FILTER_VALIDATE_URL)
-                                    ? $row['gambar']
-                                    : "../uploads/berita/{$row['gambar']}";
-                                ?>
-                                <img src="<?= $imgSrc ?>" alt="Gambar Berita" class="img-thumbnail berita-img">
+                                <div class="image-box">
+                                    <?php
+                                    $imgSrc = filter_var($row['gambar'], FILTER_VALIDATE_URL)
+                                        ? $row['gambar']
+                                        : "../uploads/berita/{$row['gambar']}";
+                                    ?>
+                                    <img src="<?= $imgSrc ?>" alt="Gambar Berita" class="img-in-box">
+                                </div>
                             </td>
                             <td>
-                                <a href="edit-berita.php?id=<?= $row['id_berita'] ?>" class="btn-action btn-edit me-1">
-                                    <i class="bi bi-pencil-square"></i> Edit
-                                </a>
-                                <a href="hapus-berita.php?id=<?= $row['id_berita'] ?>" class="btn-action btn-delete" onclick="return confirm('Yakin ingin menghapus berita ini?')">
-                                    <i class="bi bi-trash"></i> Hapus
-                                </a>
+                                <div class="action-box">
+                                    <a href="edit-berita.php?id=<?= $row['id_berita'] ?>" class="btn-action btn-edit me-1">
+                                        <i class="bi bi-pencil-square"></i> Edit
+                                    </a>
+                                    <a href="hapus-berita.php?id=<?= $row['id_berita'] ?>" class="btn-action btn-delete" onclick="return confirm('Yakin ingin menghapus berita ini?')">
+                                        <i class="bi bi-trash"></i> Hapus
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                     <?php endwhile; ?>
