@@ -34,7 +34,7 @@ body {
     color: #fff;
     font-weight: 600;
     border: none;
-    border-radius: 12px;
+    border-radius: 0; /* Mengubah sudut menjadi kotak */
     padding: 12px 24px;
     transition: all 0.3s ease;
 }
@@ -49,7 +49,7 @@ body {
 /* ===== Container Tabel ===== */
 .table-container {
     background: #fff;
-    border-radius: 20px;
+    border-radius: 0; /* Mengubah sudut menjadi kotak */
     padding: 20px;
     margin-top: 25px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -61,14 +61,14 @@ body {
     border-spacing: 0;
     width: 100%;
     table-layout: fixed; /* Memaksa tabel untuk mematuhi lebar yang ditentukan */
-    border-radius: 12px; /* Sudut melengkung untuk seluruh tabel */
+    border-radius: 0; /* Mengubah sudut menjadi kotak */
     overflow: hidden; /* Memastikan konten mengikuti sudut melengkung */
 }
 
 /* ===== Header Tabel ===== */
 .modern-table-v2 thead th {
-    background-color: var(--table-header-bg);
-    color: #fff;
+    background-color: var(--primary-blue); /* Latar belakang biru */
+    color: #fff; /* Tulisan putih */
     padding: 18px 20px;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -134,7 +134,7 @@ body {
 .image-box,
 .action-box {
     background-color: transparent;
-    border-radius: 10px;
+    border-radius: 0; /* Mengubah sudut menjadi kotak */
     padding: 0;
     display: flex;
     justify-content: center;
@@ -146,7 +146,7 @@ body {
     width: 100px;
     height: 70px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 0; /* Mengubah sudut menjadi kotak */
     transition: transform 0.3s ease;
 }
 
@@ -171,7 +171,7 @@ body {
 /* ===== Tombol Aksi ===== */
 .action-box .btn-action {
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 0; /* Mengubah sudut menjadi kotak */
     font-size: 14px;
     font-weight: 500;
     display: inline-flex;
@@ -220,7 +220,7 @@ body {
         /* Beri jarak antar baris/kartu */
         margin-bottom: 25px;
         border: 1px solid #e0e6ed;
-        border-radius: 12px;
+        border-radius: 0; /* Mengubah sudut menjadi kotak */
         overflow: hidden;
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
