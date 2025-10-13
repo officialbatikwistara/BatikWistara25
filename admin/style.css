@@ -1,87 +1,103 @@
 /* =============================================
-   ✨ Styling Tabel V6 (Navy Gold Elegant Theme) ✨
+   ✨ Modern Clean Table Design ✨
    ============================================= */
 
 :root {
-  --theme-primary: #071739;
-  --theme-secondary: #4B6382;
-  --theme-accent: #A4B5C4;
-  --theme-light: #CDD5D8;
-  --theme-gold: #A68868;
-  --theme-cream: #E3C39D;
-  --theme-bg: #F5F5F5;
+  --navy-dark: #071739;
+  --navy-medium: #4B6382;
+  --blue-light: #A4B5C4;
+  --grey-light: #CDD5D8;
+  --gold: #A68868;
+  --cream: #E3C39D;
+  --bg-light: #F8F9FA;
   --white: #ffffff;
-  --grey-border: #E5E7EB;
-  --text-color: #6B7280;
-  --text-color-dark: #071739;
-  --danger-red: #EF4444;
-  --danger-red-hover: #DC2626;
+  --border: #DEE2E6;
+  --text-primary: #2C3E50;
+  --text-secondary: #6C757D;
+  --danger: #DC3545;
+  --danger-hover: #C82333;
 }
 
 body {
-    background-color: var(--theme-bg);
+    background-color: var(--bg-light);
     font-family: 'Poppins', sans-serif;
 }
 
-/* ===== Judul Halaman & Tombol Tambah ===== */
+/* ===== Page Header ===== */
+.page-header {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-medium) 100%);
+    padding: 24px 32px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(7, 23, 57, 0.15);
+}
+
 .page-header h2 {
-    color: var(--text-color-dark);
+    color: var(--white);
     font-weight: 700;
+    font-size: 24px;
+    margin: 0;
+}
+
+.page-header h2 i {
+    color: var(--cream);
 }
 
 .btn-add {
-    background: linear-gradient(135deg, #A68868 0%, #E3C39D 100%);
-    color: var(--white);
+    background: linear-gradient(135deg, var(--gold) 0%, var(--cream) 100%);
+    color: var(--navy-dark);
     font-weight: 600;
     border: none;
     border-radius: 8px;
-    padding: 12px 24px;
+    padding: 12px 28px;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(166, 136, 104, 0.3);
 }
 
 .btn-add:hover {
-    background: linear-gradient(135deg, #8F7456 0%, #D4B48C 100%);
+    background: linear-gradient(135deg, var(--cream) 0%, var(--gold) 100%);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(166, 136, 104, 0.4);
+    box-shadow: 0 4px 16px rgba(166, 136, 104, 0.4);
+    color: var(--navy-dark);
 }
 
-/* ===== Container Tabel ===== */
+/* ===== Table Container ===== */
 .table-container {
     background: var(--white);
-    border-radius: 8px;
-    padding: 0;
-    margin-top: 25px;
-    box-shadow: 0 4px 25px rgba(0,0,0,0.07);
+    border-radius: 12px;
     overflow: hidden;
-    border: 1px solid var(--grey-border);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border);
 }
 
-/* ===== Tabel Utama ===== */
+/* ===== Table ===== */
 .modern-table-v2 {
-    border-collapse: collapse;
     width: 100%;
+    border-collapse: collapse;
     table-layout: fixed;
 }
 
-/* ===== Header Tabel ===== */
+/* ===== Table Header ===== */
+.modern-table-v2 thead {
+    background: var(--navy-dark);
+}
+
 .modern-table-v2 thead th {
-    background: linear-gradient(135deg, #071739 0%, #4B6382 100%);
     color: var(--white);
-    padding: 16px 20px;
+    padding: 18px 20px;
     font-weight: 600;
     font-size: 14px;
     text-align: left;
-    text-transform: capitalize;
     letter-spacing: 0.3px;
     border: none;
 }
 
-/* Pengaturan lebar untuk setiap kolom */
-.modern-table-v2 th:nth-child(1) { width: 20%; }
+/* Column Widths */
+.modern-table-v2 th:nth-child(1) { width: 22%; }
 .modern-table-v2 th:nth-child(2) { width: 35%; }
-.modern-table-v2 th:nth-child(3) { width: 15%; }
-.modern-table-v2 th:nth-child(4) { width: 15%; }
-.modern-table-v2 th:nth-child(5) { width: 15%; }
+.modern-table-v2 th:nth-child(3) { width: 13%; }
+.modern-table-v2 th:nth-child(4) { width: 13%; }
+.modern-table-v2 th:nth-child(5) { width: 17%; }
 
 .modern-table-v2 th:nth-child(3),
 .modern-table-v2 th:nth-child(4),
@@ -89,10 +105,10 @@ body {
     text-align: center;
 }
 
-/* ===== Baris dan Sel ===== */
+/* ===== Table Body ===== */
 .modern-table-v2 tbody tr {
-    transition: background-color 0.2s ease;
-    border-bottom: 1px solid var(--grey-border);
+    transition: all 0.2s ease;
+    border-bottom: 1px solid var(--border);
 }
 
 .modern-table-v2 tbody tr:last-child {
@@ -100,15 +116,14 @@ body {
 }
 
 .modern-table-v2 tbody tr:hover {
-    background: linear-gradient(90deg, #F9FAFB 0%, #CDD5D8 0.5%, #F9FAFB 100%);
+    background-color: #F8F9FB;
 }
 
 .modern-table-v2 tbody td {
-    padding: 14px 20px;
+    padding: 16px 20px;
     vertical-align: middle;
-    color: var(--text-color);
+    color: var(--text-secondary);
     font-size: 14px;
-    word-wrap: break-word;
 }
 
 .modern-table-v2 tbody td:nth-child(3),
@@ -117,46 +132,63 @@ body {
     text-align: center;
 }
 
-/* ===== Kolom Judul & Deskripsi ===== */
+/* ===== Title Column ===== */
 .modern-table-v2 td.fw-semibold {
     font-weight: 600;
-    color: var(--text-color-dark);
+    color: var(--text-primary);
+    font-size: 15px;
 }
 
-/* ===== Kotak Gambar & Aksi ===== */
-.image-box,
-.action-box {
-    padding: 0;
+/* ===== Image ===== */
+.image-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .img-in-box {
-    width: 90px;
-    height: 60px;
+    width: 100px;
+    height: 65px;
     object-fit: cover;
-    border-radius: 6px;
-    transition: transform 0.3s ease;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
 }
 
-.image-box:hover .img-in-box {
-    transform: scale(1.08);
+.img-in-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* ===== Link "Baca Selengkapnya" ===== */
+/* ===== Read More Link ===== */
 .read-more-link {
-    color: var(--theme-gold);
+    color: var(--gold);
     font-weight: 500;
     text-decoration: none;
-    transition: color 0.3s ease;
-    display: inline-block;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     margin-top: 8px;
-}
-.read-more-link:hover {
-    color: var(--theme-primary);
+    font-size: 13px;
 }
 
-/* ===== Tombol Aksi ===== */
-.action-box .btn-action {
-    padding: 7px 15px;
+.read-more-link:hover {
+    color: var(--navy-dark);
+    gap: 6px;
+}
+
+/* ===== Action Buttons ===== */
+.action-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-action {
+    padding: 8px 16px;
     border-radius: 6px;
     font-size: 13px;
     font-weight: 500;
@@ -164,64 +196,79 @@ body {
     transition: all 0.3s ease;
     text-decoration: none;
     border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .btn-edit {
-    background: linear-gradient(135deg, #4B6382 0%, #A4B5C4 100%);
+    background-color: var(--navy-medium);
 }
+
 .btn-edit:hover {
-    background: linear-gradient(135deg, #071739 0%, #4B6382 100%);
+    background-color: var(--navy-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(75, 99, 130, 0.3);
 }
 
 .btn-delete {
-    background-color: var(--danger-red);
-}
-.btn-delete:hover {
-    background-color: var(--danger-red-hover);
+    background-color: var(--danger);
 }
 
+.btn-delete:hover {
+    background-color: var(--danger-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
 
 /* =========================================
-   📱 Media Query for Responsive Table 📱
+   📱 Responsive Design
    ========================================= */
 @media screen and (max-width: 992px) {
+    .page-header {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .page-header h2 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
     .modern-table-v2 thead {
         display: none;
     }
 
+    .modern-table-v2,
     .modern-table-v2 tbody,
     .modern-table-v2 tr,
     .modern-table-v2 td {
         display: block;
         width: 100%;
     }
-    
+
     .table-container {
-      border: none;
-      box-shadow: none;
-      background: transparent;
+        border: none;
+        box-shadow: none;
+        background: transparent;
     }
 
     .modern-table-v2 tr {
-        margin-bottom: 20px;
-        border: 1px solid var(--grey-border);
-        border-radius: 8px;
+        margin-bottom: 16px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
         overflow: hidden;
         background: var(--white);
-        box-shadow: 0 4px 25px rgba(0,0,0,0.07);
-    }
-    
-    .modern-table-v2 {
-        table-layout: auto;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     }
 
     .modern-table-v2 td {
-        padding: 15px;
-        padding-left: 40%;
+        padding: 14px 16px;
+        padding-left: 45%;
         position: relative;
         text-align: right !important;
         border: none;
-        border-bottom: 1px solid var(--grey-border);
+        border-bottom: 1px solid var(--border);
     }
 
     .modern-table-v2 tr td:last-child {
@@ -231,22 +278,43 @@ body {
     .modern-table-v2 td[data-th]::before {
         content: attr(data-th);
         position: absolute;
-        left: 15px;
+        left: 16px;
         top: 50%;
         transform: translateY(-50%);
         font-weight: 600;
-        color: var(--text-color-dark);
+        color: var(--text-primary);
         text-align: left;
-        width: 35%;
+        width: 40%;
+        font-size: 13px;
     }
 
-    .modern-table-v2 .image-box,
-    .modern-table-v2 .action-box {
+    .image-box,
+    .action-box {
         justify-content: flex-end;
     }
-    
+
     .img-in-box {
-        width: 80px;
-        height: 56px;
+        width: 90px;
+        height: 60px;
+    }
+
+    .action-box {
+        gap: 6px;
+    }
+
+    .btn-action {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .btn-add {
+        width: 100%;
+        text-align: center;
+    }
+
+    .page-header {
+        text-align: center;
     }
 }
