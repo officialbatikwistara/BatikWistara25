@@ -3,16 +3,16 @@
 <?php include '../config/koneksi.php'; ?>
 
 <div class="container py-5">
-  <div class="page-header">
+  <div class="page-header shadow-sm">
     <h2><i class="bi bi-newspaper"></i> Daftar Berita</h2>
-    <a href="tambah-berita.php" class="btn btn-add shadow-sm">
+    <a href="tambah-berita.php" class="btn btn-add">
       <i class="bi bi-plus-circle me-1"></i> Tambah Berita
     </a>
   </div>
 
   <div class="table-container">
     <div class="table-responsive">
-      <table class="table table-bordered align-middle">
+      <table class="table align-middle">
         <thead>
           <tr>
             <th>Judul</th>
@@ -49,7 +49,7 @@
                   ? $row['gambar']
                   : "../uploads/berita/{$row['gambar']}";
                 ?>
-                <img src="<?= $imgSrc ?>" alt="Gambar Berita" class="img-thumbnail shadow-sm">
+                <img src="<?= $imgSrc ?>" alt="Gambar Berita" class="img-thumbnail">
               </td>
               <td>
                 <a href="edit-berita.php?id=<?= $row['id_berita'] ?>" class="btn-action btn-edit me-1">
