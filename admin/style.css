@@ -1,18 +1,21 @@
 /* =============================================
-   ✨ Styling Tabel V5 (Elegant Dark Header) ✨
+   ✨ Styling Tabel V6 (Navy Gold Elegant Theme) ✨
    ============================================= */
 
 :root {
-  --theme-gold: #a68868;
-  --theme-gold-hover: #917557;
-  --theme-dark-blue: #2B3A55;
-  --theme-bg: #f5f0e9;
+  --theme-primary: #071739;
+  --theme-secondary: #4B6382;
+  --theme-accent: #A4B5C4;
+  --theme-light: #CDD5D8;
+  --theme-gold: #A68868;
+  --theme-cream: #E3C39D;
+  --theme-bg: #F5F5F5;
   --white: #ffffff;
-  --grey-border: #e9ecef;
-  --text-color: #495057;
-  --text-color-light: #6c757d;
-  --danger-red: #dc3545;
-  --danger-red-hover: #c82333;
+  --grey-border: #E5E7EB;
+  --text-color: #6B7280;
+  --text-color-dark: #071739;
+  --danger-red: #EF4444;
+  --danger-red-hover: #DC2626;
 }
 
 body {
@@ -22,12 +25,12 @@ body {
 
 /* ===== Judul Halaman & Tombol Tambah ===== */
 .page-header h2 {
-    color: var(--theme-dark-blue);
+    color: var(--text-color-dark);
     font-weight: 700;
 }
 
 .btn-add {
-    background: var(--theme-gold);
+    background: linear-gradient(135deg, #A68868 0%, #E3C39D 100%);
     color: var(--white);
     font-weight: 600;
     border: none;
@@ -37,19 +40,19 @@ body {
 }
 
 .btn-add:hover {
-    background: var(--theme-gold-hover);
+    background: linear-gradient(135deg, #8F7456 0%, #D4B48C 100%);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(166, 136, 104, 0.4);
 }
 
 /* ===== Container Tabel ===== */
 .table-container {
     background: var(--white);
     border-radius: 8px;
-    padding: 0; /* Padding dihilangkan agar tabel menempel */
+    padding: 0;
     margin-top: 25px;
     box-shadow: 0 4px 25px rgba(0,0,0,0.07);
-    overflow: hidden; /* Penting agar border-radius pada tabel terlihat */
+    overflow: hidden;
     border: 1px solid var(--grey-border);
 }
 
@@ -62,14 +65,14 @@ body {
 
 /* ===== Header Tabel ===== */
 .modern-table-v2 thead th {
-    background-color: var(--theme-dark-blue); /* Header biru tua solid */
-    color: var(--white); /* Teks putih */
+    background: linear-gradient(135deg, #071739 0%, #4B6382 100%);
+    color: var(--white);
     padding: 16px 20px;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 14px;
     text-align: left;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    letter-spacing: 0.3px;
     border: none;
 }
 
@@ -93,15 +96,15 @@ body {
 }
 
 .modern-table-v2 tbody tr:last-child {
-    border-bottom: none; /* Hapus border di baris terakhir */
+    border-bottom: none;
 }
 
 .modern-table-v2 tbody tr:hover {
-    background-color: #fbf9f6;
+    background: linear-gradient(90deg, #F9FAFB 0%, #CDD5D8 0.5%, #F9FAFB 100%);
 }
 
 .modern-table-v2 tbody td {
-    padding: 14px 20px; /* Padding sedikit lebih ramping */
+    padding: 14px 20px;
     vertical-align: middle;
     color: var(--text-color);
     font-size: 14px;
@@ -117,7 +120,7 @@ body {
 /* ===== Kolom Judul & Deskripsi ===== */
 .modern-table-v2 td.fw-semibold {
     font-weight: 600;
-    color: var(--theme-dark-blue);
+    color: var(--text-color-dark);
 }
 
 /* ===== Kotak Gambar & Aksi ===== */
@@ -138,7 +141,7 @@ body {
     transform: scale(1.08);
 }
 
-/* ===== Link “Baca Selengkapnya” ===== */
+/* ===== Link "Baca Selengkapnya" ===== */
 .read-more-link {
     color: var(--theme-gold);
     font-weight: 500;
@@ -148,12 +151,12 @@ body {
     margin-top: 8px;
 }
 .read-more-link:hover {
-    color: var(--theme-dark-blue);
+    color: var(--theme-primary);
 }
 
 /* ===== Tombol Aksi ===== */
 .action-box .btn-action {
-    padding: 7px 15px; /* Tombol dibuat solid */
+    padding: 7px 15px;
     border-radius: 6px;
     font-size: 13px;
     font-weight: 500;
@@ -164,10 +167,10 @@ body {
 }
 
 .btn-edit {
-    background-color: var(--theme-dark-blue);
+    background: linear-gradient(135deg, #4B6382 0%, #A4B5C4 100%);
 }
 .btn-edit:hover {
-    background-color: #222e44;
+    background: linear-gradient(135deg, #071739 0%, #4B6382 100%);
 }
 
 .btn-delete {
@@ -232,7 +235,7 @@ body {
         top: 50%;
         transform: translateY(-50%);
         font-weight: 600;
-        color: var(--theme-dark-blue);
+        color: var(--text-color-dark);
         text-align: left;
         width: 35%;
     }
@@ -247,4 +250,3 @@ body {
         height: 56px;
     }
 }
-
