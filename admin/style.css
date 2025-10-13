@@ -1,21 +1,16 @@
-/* ==========================
-   ✨ Styling Tabel V2 ✨
-   ========================== */
+/* =================================
+   ✨ Styling Tabel V3 (Gold Theme) ✨
+   ================================= */
 
 :root {
-  --dark-navy: #071739;
-  --blue-gray: #4B6382;
-  --light-blue: #A4B5C4;
-  --pale-blue: #CDD5DB;
-  --warm-tan: #A68868;
-  --soft-gold: #E3C39D;
-  --text-dark: #2B3A55;
-  --text-light: #4B6382;
-  --primary-blue: #344966;
-  --secondary-gold: #c79f67;
-  --table-header-bg: #343a40; /* Warna header baru */
-  --table-border-light: #eaedf1; /* Warna border baru */
-  --table-hover-light: #f8f9fa; /* Warna hover baru */
+  --gold-primary: #c79f67;
+  --gold-secondary: #E3C39D;
+  --dark-navy: #2B3A55;
+  --off-white: #f8f9fa;
+  --grey-border: #dee2e6;
+  --text-color: #495057;
+  --danger-red: #e74c3c;
+  --danger-red-hover: #c0392b;
 }
 
 body {
@@ -30,17 +25,17 @@ body {
 }
 
 .btn-add {
-    background: var(--secondary-gold);
+    background: var(--gold-primary);
     color: #fff;
     font-weight: 600;
     border: none;
-    border-radius: 0; /* Mengubah sudut menjadi kotak */
+    border-radius: 8px; /* Sudut lebih lembut */
     padding: 12px 24px;
     transition: all 0.3s ease;
 }
 
 .btn-add:hover {
-    background: var(--warm-tan);
+    background: #b38e5a;
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -49,32 +44,29 @@ body {
 /* ===== Container Tabel ===== */
 .table-container {
     background: #fff;
-    border-radius: 0; /* Mengubah sudut menjadi kotak */
+    border-radius: 8px;
     padding: 20px;
     margin-top: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border: 1px solid var(--grey-border);
 }
 
 /* ===== Tabel Utama ===== */
 .modern-table-v2 {
-    border-collapse: separate;
-    border-spacing: 0;
+    border-collapse: collapse; /* Menggunakan collapse untuk border yang lebih rapi */
     width: 100%;
-    table-layout: fixed; /* Memaksa tabel untuk mematuhi lebar yang ditentukan */
-    border-radius: 0; /* Mengubah sudut menjadi kotak */
-    overflow: hidden; /* Memastikan konten mengikuti sudut melengkung */
+    table-layout: fixed;
 }
 
 /* ===== Header Tabel ===== */
 .modern-table-v2 thead th {
-    background-color: var(--primary-blue); /* Latar belakang biru */
-    color: #fff; /* Tulisan putih */
-    padding: 18px 20px;
+    background-color: var(--off-white);
+    color: var(--dark-navy);
+    padding: 16px 20px;
     font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
     font-size: 13px;
-    text-align: left; /* Teks header rata kiri */
+    text-align: left;
+    border-bottom: 2px solid var(--gold-primary); /* Aksen gold di bawah header */
 }
 
 /* Pengaturan lebar untuk setiap kolom */
@@ -97,17 +89,16 @@ body {
 }
 
 .modern-table-v2 tbody tr:hover {
-    background-color: var(--table-hover-light);
+    background-color: #fdfaf5; /* Hover dengan warna krem lembut */
 }
 
 .modern-table-v2 tbody td {
-    padding: 18px 20px;
+    padding: 15px 20px; /* Padding lebih ramping */
     vertical-align: middle;
-    color: var(--text-dark);
-    font-weight: 400;
+    color: var(--text-color);
     font-size: 14px;
-    border-bottom: 1px solid var(--table-border-light);
-    word-wrap: break-word; /* Memastikan teks panjang tidak merusak layout */
+    border-bottom: 1px solid var(--grey-border);
+    word-wrap: break-word;
 }
 
 .modern-table-v2 tbody tr:last-child td {
@@ -122,19 +113,15 @@ body {
 }
 
 /* ===== Kolom Judul & Deskripsi ===== */
-.modern-table-v2 td.text-start {
-    text-align: left;
-}
 .modern-table-v2 td.fw-semibold {
     font-weight: 600;
-    color: var(--primary-blue);
+    color: var(--dark-navy);
 }
 
 /* ===== Kotak Gambar & Aksi ===== */
 .image-box,
 .action-box {
     background-color: transparent;
-    border-radius: 0; /* Mengubah sudut menjadi kotak */
     padding: 0;
     display: flex;
     justify-content: center;
@@ -143,10 +130,10 @@ body {
 }
 
 .img-in-box {
-    width: 100px;
-    height: 70px;
+    width: 90px;
+    height: 60px;
     object-fit: cover;
-    border-radius: 0; /* Mengubah sudut menjadi kotak */
+    border-radius: 6px;
     transition: transform 0.3s ease;
 }
 
@@ -156,7 +143,7 @@ body {
 
 /* ===== Link “Baca Selengkapnya” ===== */
 .read-more-link {
-    color: var(--secondary-gold);
+    color: var(--gold-primary);
     font-weight: 500;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -164,106 +151,99 @@ body {
     margin-top: 8px;
 }
 .read-more-link:hover {
-    color: var(--warm-tan);
+    color: var(--dark-navy);
     text-decoration: underline;
 }
 
 /* ===== Tombol Aksi ===== */
 .action-box .btn-action {
-    padding: 8px 16px;
-    border-radius: 0; /* Mengubah sudut menjadi kotak */
-    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
     font-weight: 500;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: #fff;
     transition: all 0.3s ease;
     text-decoration: none;
+    border: 1px solid transparent;
 }
 
 .btn-edit {
-    background: var(--primary-blue);
+    background: transparent;
+    border-color: var(--dark-navy);
+    color: var(--dark-navy);
 }
 .btn-edit:hover {
-    background: #253347;
-    transform: scale(1.05);
+    background: var(--dark-navy);
+    color: #fff;
 }
 
 .btn-delete {
-    background: #e74c3c;
+    background: transparent;
+    border-color: var(--danger-red);
+    color: var(--danger-red);
 }
 .btn-delete:hover {
-    background: #c0392b;
-    transform: scale(1.05);
+    background: var(--danger-red-hover);
+    border-color: var(--danger-red-hover);
+    color: #fff;
 }
+
 
 /* =========================================
    📱 Media Query for Responsive Table 📱
    ========================================= */
 @media screen and (max-width: 992px) {
     .modern-table-v2 thead {
-        /* Sembunyikan header tabel di mobile */
         display: none;
     }
 
     .modern-table-v2 tbody,
     .modern-table-v2 tr,
     .modern-table-v2 td {
-        /* Ubah elemen menjadi block agar tersusun vertikal */
         display: block;
         width: 100%;
-        text-align: right; /* Ratakan teks ke kanan untuk konten */
     }
     
     .modern-table-v2 tr {
-        /* Beri jarak antar baris/kartu */
-        margin-bottom: 25px;
-        border: 1px solid #e0e6ed;
-        border-radius: 0; /* Mengubah sudut menjadi kotak */
+        margin-bottom: 20px;
+        border: 1px solid var(--grey-border);
+        border-radius: 8px;
         overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
     
-    /* Reset table-layout untuk mobile */
     .modern-table-v2 {
         table-layout: auto;
     }
 
     .modern-table-v2 td {
         padding: 15px;
-        padding-left: 40%; /* Buat ruang untuk label */
+        padding-left: 40%;
         position: relative;
-        border-bottom: 1px solid #e9eef3;
-        text-align: right !important; /* Paksa rata kanan semua sel di mobile */
+        text-align: right !important;
+        border-bottom: 1px solid var(--grey-border);
     }
 
-    .modern-table-v2 td:last-child {
+    .modern-table-v2 tr td:last-child {
         border-bottom: none;
     }
 
     .modern-table-v2 td[data-th]::before {
-        /* Logika untuk menampilkan label dari atribut data-th */
         content: attr(data-th);
         position: absolute;
         left: 15px;
         top: 50%;
         transform: translateY(-50%);
         font-weight: 600;
-        color: var(--primary-blue);
+        color: var(--dark-navy);
         text-align: left;
-        width: 35%; /* Batasi lebar label */
+        width: 35%;
     }
 
-    /* Penyesuaian khusus untuk beberapa kolom */
     .modern-table-v2 .image-box,
     .modern-table-v2 .action-box {
-        justify-content: flex-end; /* Sejajarkan konten dengan teks */
-        padding: 5px;
-        background-color: transparent;
-        box-shadow: none;
-        width: auto;
-        display: inline-flex;
+        justify-content: flex-end;
     }
     
     .img-in-box {
@@ -271,3 +251,4 @@ body {
         height: 56px;
     }
 }
+
