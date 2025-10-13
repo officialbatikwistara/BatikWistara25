@@ -11,126 +11,135 @@
   --soft-gold: #E3C39D;
   --text-dark: #2B3A55;
   --text-light: #4B6382;
+  --accent-color: #5d759d;
+  --delete-color: #dc3545;
 }
 
-/* ===== Container Tabel ===== */
-.table-container {
-  background: #fff;
-  border-radius: 20px;
-  padding: 30px;
-  margin-top: 20px;
-  box-shadow: 0 10px 25px rgba(7, 23, 57, 0.15);
-  overflow-x: auto;
+body {
+    background-color: #f0f2f5;
 }
 
-/* ===== Header Tabel ===== */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-radius: 15px;
-  overflow: hidden;
-  text-align: center;
-}
-
-thead th {
-  background: linear-gradient(90deg, var(--dark-navy), var(--blue-gray));
-  color: #fff;
-  padding: 16px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-  font-size: 15px;
-}
-
-/* ===== Body Tabel ===== */
-tbody tr {
-  background-color: #ffffff;
-  transition: all 0.25s ease-in-out;
-  border-bottom: 1px solid #e0e6ed;
-}
-
-tbody tr:hover {
-  background-color: #f6f8fc;
-  transform: scale(1.01);
-}
-
-tbody td {
-  padding: 18px 12px;
-  vertical-align: middle;
-  color: var(--text-dark);
-  font-weight: 500;
-  font-size: 15px;
-}
-
-/* ===== Gambar di tabel ===== */
-.img-thumbnail {
-  width: 120px;
-  height: 90px;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 2px solid var(--soft-gold);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.img-thumbnail:hover {
-  transform: scale(1.08);
-  box-shadow: 0 8px 14px rgba(0,0,0,0.2);
+/* ===== Judul Halaman ===== */
+.page-header h2 {
+    color: var(--dark-navy);
+    font-weight: 700;
 }
 
 /* ===== Tombol Tambah ===== */
 .btn-add {
-  background: var(--soft-gold);
-  color: var(--dark-navy);
-  font-weight: 600;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 18px;
-  transition: all 0.3s ease;
+    background: var(--soft-gold);
+    color: var(--dark-navy);
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    transition: all 0.3s ease;
 }
 
 .btn-add:hover {
-  background: var(--warm-tan);
-  color: white;
-  transform: scale(1.05);
+    background: var(--warm-tan);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ===== Container Kartu Berita ===== */
+.news-card-container {
+    display: grid;
+    gap: 30px;
+}
+
+.news-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid #e9ecef;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Gambar Kartu ===== */
+.news-card .card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px 0 0 16px;
+}
+
+/* ===== Isi Kartu ===== */
+.news-card .card-body {
+    padding: 24px;
+}
+
+.news-card .card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.news-card .card-date {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.news-card .card-text {
+    color: var(--text-light);
+    line-height: 1.6;
+    font-weight: 400;
 }
 
 /* ===== Tombol Aksi ===== */
+.card-actions {
+    margin-top: 15px;
+}
+
 .btn-action {
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  color: #fff;
-  transition: all 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #fff;
 }
 
 .btn-edit {
-  background: #304b75;
+    background-color: var(--accent-color);
 }
 .btn-edit:hover {
-  background: #1b2b4a;
-  transform: scale(1.05);
+    background-color: #3e5a80;
+    transform: scale(1.05);
 }
 
 .btn-delete {
-  background: #e74c3c;
+    background-color: var(--delete-color);
 }
 .btn-delete:hover {
-  background: #c0392b;
-  transform: scale(1.05);
+    background-color: #b02a37;
+    transform: scale(1.05);
 }
 
-/* ===== Link “Baca Selengkapnya” ===== */
-.text-primary {
-  color: var(--soft-gold) !important;
-  font-weight: 500;
-}
-.text-primary:hover {
-  color: var(--warm-tan) !important;
-  text-decoration: underline;
+/* Responsive */
+@media (max-width: 768px) {
+    .news-card .row {
+        flex-direction: column;
+    }
+    .news-card .card-img {
+        border-radius: 16px 16px 0 0;
+        height: 200px;
+    }
+    .news-card .card-body {
+        padding: 16px;
+    }
+    .news-card .card-title {
+        font-size: 1.25rem;
+    }
 }
