@@ -1,11 +1,13 @@
-/* =================================
-   ✨ Styling Tabel V3 (Gold Theme) ✨
-   ================================= */
+/* =========================================
+   ✨ Styling Tabel V4 (Warm Gold Theme) ✨
+   ========================================= */
 
 :root {
-  --gold-primary: #c79f67;
-  --gold-secondary: #E3C39D;
-  --dark-navy: #2B3A55;
+  --theme-gold: #a68868; /* Emas kecoklatan dari gambar */
+  --theme-gold-hover: #917557; /* Versi lebih gelap untuk hover */
+  --theme-dark-blue: #2B3A55; /* Biru tua dari gambar */
+  --theme-bg: #f5f0e9; /* Krem dari latar belakang gambar */
+  --white: #ffffff;
   --off-white: #f8f9fa;
   --grey-border: #dee2e6;
   --text-color: #495057;
@@ -14,19 +16,19 @@
 }
 
 body {
-    background-color: #f0f2f5;
+    background-color: var(--theme-bg);
     font-family: 'Poppins', sans-serif;
 }
 
 /* ===== Judul Halaman & Tombol Tambah ===== */
 .page-header h2 {
-    color: var(--dark-navy);
+    color: var(--theme-dark-blue);
     font-weight: 700;
 }
 
 .btn-add {
-    background: var(--gold-primary);
-    color: #fff;
+    background: var(--theme-gold);
+    color: var(--white);
     font-weight: 600;
     border: none;
     border-radius: 8px; /* Sudut lebih lembut */
@@ -35,15 +37,15 @@ body {
 }
 
 .btn-add:hover {
-    background: #b38e5a;
-    color: white;
+    background: var(--theme-gold-hover);
+    color: var(--white);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 /* ===== Container Tabel ===== */
 .table-container {
-    background: #fff;
+    background: var(--white);
     border-radius: 8px;
     padding: 20px;
     margin-top: 25px;
@@ -61,12 +63,12 @@ body {
 /* ===== Header Tabel ===== */
 .modern-table-v2 thead th {
     background-color: var(--off-white);
-    color: var(--dark-navy);
+    color: var(--theme-dark-blue);
     padding: 16px 20px;
     font-weight: 600;
     font-size: 13px;
     text-align: left;
-    border-bottom: 2px solid var(--gold-primary); /* Aksen gold di bawah header */
+    border-bottom: 2px solid var(--theme-gold); /* Aksen gold di bawah header */
 }
 
 /* Pengaturan lebar untuk setiap kolom */
@@ -89,7 +91,7 @@ body {
 }
 
 .modern-table-v2 tbody tr:hover {
-    background-color: #fdfaf5; /* Hover dengan warna krem lembut */
+    background-color: #fbf9f6; /* Hover dengan warna krem yang sangat lembut */
 }
 
 .modern-table-v2 tbody td {
@@ -115,7 +117,7 @@ body {
 /* ===== Kolom Judul & Deskripsi ===== */
 .modern-table-v2 td.fw-semibold {
     font-weight: 600;
-    color: var(--dark-navy);
+    color: var(--theme-dark-blue);
 }
 
 /* ===== Kotak Gambar & Aksi ===== */
@@ -143,7 +145,7 @@ body {
 
 /* ===== Link “Baca Selengkapnya” ===== */
 .read-more-link {
-    color: var(--gold-primary);
+    color: var(--theme-gold);
     font-weight: 500;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -151,7 +153,7 @@ body {
     margin-top: 8px;
 }
 .read-more-link:hover {
-    color: var(--dark-navy);
+    color: var(--theme-dark-blue);
     text-decoration: underline;
 }
 
@@ -171,12 +173,12 @@ body {
 
 .btn-edit {
     background: transparent;
-    border-color: var(--dark-navy);
-    color: var(--dark-navy);
+    border-color: var(--theme-dark-blue);
+    color: var(--theme-dark-blue);
 }
 .btn-edit:hover {
-    background: var(--dark-navy);
-    color: #fff;
+    background: var(--theme-dark-blue);
+    color: var(--white);
 }
 
 .btn-delete {
@@ -187,7 +189,7 @@ body {
 .btn-delete:hover {
     background: var(--danger-red-hover);
     border-color: var(--danger-red-hover);
-    color: #fff;
+    color: var(--white);
 }
 
 
@@ -236,7 +238,7 @@ body {
         top: 50%;
         transform: translateY(-50%);
         font-weight: 600;
-        color: var(--dark-navy);
+        color: var(--theme-dark-blue);
         text-align: left;
         width: 35%;
     }
