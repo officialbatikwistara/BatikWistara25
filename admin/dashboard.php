@@ -3,9 +3,9 @@
 <?php include '../config/koneksi.php'; ?>
 
 <div class="container py-5">
-    <div class="page-header d-flex justify-content-between align-items-center mb-4">
+    <div class="page-header d-flex justify-content-between align-items-center flex-wrap mb-4">
         <h2><i class="bi bi-newspaper me-2"></i> Daftar Berita</h2>
-        <a href="tambah-berita.php" class="btn btn-add shadow-sm">
+        <a href="tambah-berita.php" class="btn btn-add shadow-sm mt-2 mt-md-0">
             <i class="bi bi-plus-circle me-1"></i> Tambah Berita
         </a>
     </div>
@@ -24,12 +24,15 @@
                 </thead>
                 <tbody>
                     <?php
+                    // Set default timezone ke Asia/Jakarta
+                    date_default_timezone_set('Asia/Jakarta');
                     $data = mysqli_query($conn, "SELECT * FROM berita ORDER BY tanggal DESC");
                     while ($row = mysqli_fetch_array($data)) :
                     ?>
                         <tr>
-                            <td class="fw-semibold text-start"><?= htmlspecialchars($row['judul']) ?></td>
-                            <td class="text-start">
+                            <!-- Menambahkan atribut data-th untuk label pada tampilan mobile -->
+                            <td data-th="Judul" class="fw-semibold text-start"><?= htmlspecialchars($row['judul']) ?></td>
+                            <td data-th="Deskripsi" class="text-start">
                                 <?= mb_substr(strip_tags($row['deskripsi']), 0, 150) ?>...
                                 <br>
                                 <?php if (!empty($row['tautan_sumber'])) : ?>
@@ -42,8 +45,8 @@
                                     </a>
                                 <?php endif; ?>
                             </td>
-                            <td><?= date('d-m-Y', strtotime($row['tanggal'])) ?></td>
-                            <td>
+                            <td data-th="Tanggal"><?= date('d-m-Y', strtotime($row['tanggal'])) ?></td>
+                            <td data-th="Gambar">
                                 <div class="image-box">
                                     <?php
                                     $imgSrc = filter_var($row['gambar'], FILTER_VALIDATE_URL)
@@ -53,7 +56,7 @@
                                     <img src="<?= $imgSrc ?>" alt="Gambar Berita" class="img-in-box">
                                 </div>
                             </td>
-                            <td>
+                            <td data-th="Aksi">
                                 <div class="action-box">
                                     <a href="edit-berita.php?id=<?= $row['id_berita'] ?>" class="btn-action btn-edit me-1">
                                         <i class="bi bi-pencil-square"></i> Edit

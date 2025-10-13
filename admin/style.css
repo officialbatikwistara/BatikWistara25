@@ -57,8 +57,6 @@ body {
     border-collapse: separate;
     border-spacing: 0;
     width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
 }
 
 /* ===== Header Tabel ===== */
@@ -141,6 +139,8 @@ body {
     font-weight: 500;
     text-decoration: none;
     transition: color 0.3s ease;
+    display: inline-block;
+    margin-top: 8px;
 }
 .read-more-link:hover {
     color: var(--warm-tan);
@@ -175,4 +175,77 @@ body {
 .btn-delete:hover {
     background: #c0392b;
     transform: scale(1.05);
+}
+
+/* =========================================
+   📱 Media Query for Responsive Table 📱
+   ========================================= */
+@media screen and (max-width: 992px) {
+    .modern-table-v2 thead {
+        /* Sembunyikan header tabel di mobile */
+        display: none;
+    }
+
+    .modern-table-v2 tbody,
+    .modern-table-v2 tr,
+    .modern-table-v2 td {
+        /* Ubah elemen menjadi block agar tersusun vertikal */
+        display: block;
+        width: 100%;
+        text-align: right; /* Ratakan teks ke kanan untuk konten */
+    }
+    
+    .modern-table-v2 tr {
+        /* Beri jarak antar baris/kartu */
+        margin-bottom: 25px;
+        border: 1px solid #e0e6ed;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .modern-table-v2 td {
+        padding: 15px;
+        padding-left: 40%; /* Buat ruang untuk label */
+        position: relative;
+        border-bottom: 1px solid #e9eef3;
+    }
+
+    .modern-table-v2 td:last-child {
+        border-bottom: none;
+    }
+
+    .modern-table-v2 td[data-th]::before {
+        /* Logika untuk menampilkan label dari atribut data-th */
+        content: attr(data-th);
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: 600;
+        color: var(--primary-blue);
+        text-align: left;
+        width: 35%; /* Batasi lebar label */
+    }
+
+    /* Penyesuaian khusus untuk beberapa kolom */
+    .modern-table-v2 .image-box,
+    .modern-table-v2 .action-box {
+        justify-content: flex-end; /* Sejajarkan konten dengan teks */
+        padding: 5px;
+        background-color: transparent;
+        box-shadow: none;
+        width: auto;
+        display: inline-flex;
+    }
+
+    .modern-table-v2 td.text-start {
+        /* Paksa rata kanan agar konsisten di mobile */
+        text-align: right;
+    }
+    
+    .img-in-box {
+        width: 80px;
+        height: 56px;
+    }
 }
