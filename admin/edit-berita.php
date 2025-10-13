@@ -4,7 +4,7 @@
 
 <?php
 if (!isset($_GET['id']) && !isset($_POST['update_berita'])) {
-  echo "<div class='alert alert-danger'><i class='bi bi-exclamation-circle'></i> ID berita tidak ditemukan.</div>";
+  echo "<div class='container py-4'><div class='alert alert-danger'><i class='bi bi-exclamation-circle'></i> ID berita tidak ditemukan.</div></div>";
   exit;
 }
 
@@ -36,7 +36,6 @@ if (isset($_POST['update_berita'])) {
     $gambarBaru = time() . '-' . $gambar;
 
     if (move_uploaded_file($tmp, $folder . $gambarBaru)) {
-      // Hapus gambar lama (jika bukan URL)
       if (!filter_var($gambar_lama, FILTER_VALIDATE_URL) && file_exists($folder . $gambar_lama)) {
         unlink($folder . $gambar_lama);
       }
@@ -46,7 +45,6 @@ if (isset($_POST['update_berita'])) {
     }
   }
 
-  // Update data
   if (empty($error_message)) {
     $sql = "UPDATE berita SET 
               judul='$judul',
@@ -61,7 +59,6 @@ if (isset($_POST['update_berita'])) {
     $simpan = mysqli_query($conn, $sql);
     if ($simpan) {
       $success_message = "Berita berhasil diperbarui!";
-      // Redirect setelah 2 detik
       echo "<script>setTimeout(function(){ window.location.href='dashboard.php'; }, 2000);</script>";
     } else {
       $error_message = "Gagal menyimpan perubahan: " . mysqli_error($conn);
@@ -77,132 +74,182 @@ $data = mysqli_query($conn, "SELECT * FROM berita WHERE id_berita = '$id'");
 $berita = mysqli_fetch_assoc($data);
 
 if (!$berita) {
-  echo "<div class='alert alert-danger'><i class='bi bi-exclamation-circle'></i> Data tidak ditemukan.</div>";
+  echo "<div class='container py-4'><div class='alert alert-danger'><i class='bi bi-exclamation-circle'></i> Data tidak ditemukan.</div></div>";
   exit;
 }
 ?>
 
-<div class="form-container">
-  <!-- Page Title -->
-  <h2>
-    <i class="bi bi-pencil-square"></i>
-    Edit Berita
-  </h2>
-  <p class="form-subtitle">Perbarui informasi berita dengan mengisi form di bawah ini</p>
+<div class="container py-5">
+  <!-- Page Header Card -->
+  <div class="card page-header-card border-0 shadow-lg mb-4">
+    <div class="card-body">
+      <h2>
+        <i class="bi bi-pencil-square"></i>
+        <span>Edit Berita</span>
+      </h2>
+      <p class="form-subtitle mb-0">Perbarui informasi berita dengan mengisi form di bawah ini</p>
+    </div>
+  </div>
 
   <!-- Alert Messages -->
   <?php if (!empty($success_message)): ?>
-  <div class="alert alert-success">
-    <i class="bi bi-check-circle"></i>
+  <div class="alert alert-success shadow">
+    <i class="bi bi-check-circle-fill"></i>
     <span><?= $success_message ?></span>
   </div>
   <?php endif; ?>
 
   <?php if (!empty($error_message)): ?>
-  <div class="alert alert-danger">
-    <i class="bi bi-exclamation-circle"></i>
+  <div class="alert alert-danger shadow">
+    <i class="bi bi-exclamation-circle-fill"></i>
     <span><?= $error_message ?></span>
   </div>
   <?php endif; ?>
 
-  <!-- Form Card -->
-  <div class="form-card">
-    <form action="edit-berita.php" method="POST" enctype="multipart/form-data" id="editBeritaForm">
-      <input type="hidden" name="id" value="<?= $berita['id_berita'] ?>">
+  <!-- Main Form Card -->
+  <div class="card form-main-card border-0 shadow-lg">
+    <div class="card-body">
+      <form action="edit-berita.php" method="POST" enctype="multipart/form-data" id="editBeritaForm">
+        <input type="hidden" name="id" value="<?= $berita['id_berita'] ?>">
 
-      <!-- Judul Berita -->
-      <div class="form-group">
-        <label>
-          <i class="bi bi-fonts"></i>
-          Judul Berita <span class="required">*</span>
-        </label>
-        <input type="text" 
-               name="judul" 
-               class="form-control" 
-               value="<?= htmlspecialchars($berita['judul']) ?>" 
-               placeholder="Masukkan judul berita yang menarik"
-               required
-               maxlength="200"
-               id="judulInput">
-        <div class="char-counter">
-          <span id="judulCounter">0</span>/200 karakter
+        <!-- Section: Informasi Dasar -->
+        <div class="section-card">
+          <div class="section-title">
+            <i class="bi bi-info-circle-fill"></i>
+            Informasi Dasar
+          </div>
+
+          <!-- Judul Berita -->
+          <div class="form-group">
+            <label>
+              <i class="bi bi-fonts"></i>
+              Judul Berita
+              <span class="required">*</span>
+              <span class="info-badge">
+                <i class="bi bi-star-fill"></i>
+                Wajib
+              </span>
+            </label>
+            <input type="text" 
+                   name="judul" 
+                   class="form-control" 
+                   value="<?= htmlspecialchars($berita['judul']) ?>" 
+                   placeholder="Masukkan judul berita yang menarik dan deskriptif"
+                   required
+                   maxlength="200"
+                   id="judulInput">
+            <div class="char-counter">
+              <i class="bi bi-hash"></i>
+              <span id="judulCounter">0</span>/200 karakter
+            </div>
+          </div>
+
+          <!-- Deskripsi Singkat -->
+          <div class="form-group">
+            <label>
+              <i class="bi bi-card-text"></i>
+              Deskripsi Singkat
+              <span class="required">*</span>
+              <span class="info-badge">
+                <i class="bi bi-star-fill"></i>
+                Wajib
+              </span>
+            </label>
+            <textarea name="deskripsi" 
+                      class="form-control" 
+                      rows="4" 
+                      placeholder="Tulis ringkasan singkat yang menarik untuk muncul di preview berita"
+                      required
+                      maxlength="250"
+                      id="deskripsiInput"><?= htmlspecialchars($berita['deskripsi']) ?></textarea>
+            <div class="char-counter">
+              <i class="bi bi-hash"></i>
+              <span id="deskripsiCounter">0</span>/250 karakter
+            </div>
+            <div class="form-help-box">
+              <i class="bi bi-lightbulb-fill"></i>
+              <span>Deskripsi ini akan muncul sebagai preview di halaman daftar berita</span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Deskripsi Singkat -->
-      <div class="form-group">
-        <label>
-          <i class="bi bi-card-text"></i>
-          Deskripsi Singkat <span class="required">*</span>
-        </label>
-        <textarea name="deskripsi" 
-                  class="form-control" 
-                  rows="3" 
-                  placeholder="Ringkasan singkat dari berita (maks. 250 karakter)"
-                  required
-                  maxlength="250"
-                  id="deskripsiInput"><?= htmlspecialchars($berita['deskripsi']) ?></textarea>
-        <div class="char-counter">
-          <span id="deskripsiCounter">0</span>/250 karakter
+        <hr class="section-divider">
+
+        <!-- Section: Konten Berita -->
+        <div class="section-card">
+          <div class="section-title">
+            <i class="bi bi-file-text-fill"></i>
+            Konten Berita
+          </div>
+
+          <!-- Isi Berita Lengkap -->
+          <div class="form-group">
+            <label>
+              <i class="bi bi-newspaper"></i>
+              Isi Berita Lengkap
+              <span class="label-optional">Opsional</span>
+            </label>
+            <textarea name="isi_berita" 
+                      class="form-control" 
+                      rows="10"
+                      placeholder="Tulis isi berita secara lengkap dan detail di sini..."><?= htmlspecialchars($berita['isi_berita']) ?></textarea>
+            <div class="form-help-box warning">
+              <i class="bi bi-info-circle-fill"></i>
+              <span>Kosongkan jika berita menggunakan tautan eksternal dari sumber lain</span>
+            </div>
+          </div>
         </div>
-        <div class="form-help-text">
-          <i class="bi bi-info-circle"></i>
-          Deskripsi ini akan muncul sebagai preview di halaman daftar berita
+
+        <hr class="section-divider">
+
+        <!-- Section: Media & Gambar -->
+        <div class="section-card">
+          <div class="section-title">
+            <i class="bi bi-image-fill"></i>
+            Media & Gambar
+          </div>
+
+          <!-- Gambar Saat Ini -->
+          <div class="form-group">
+            <label>
+              <i class="bi bi-eye-fill"></i>
+              Preview Gambar Saat Ini
+            </label>
+            <div class="card image-preview-card border-0 shadow">
+              <div class="card-body">
+                <div class="image-preview-label">
+                  <i class="bi bi-image"></i>
+                  <span>Gambar Berita</span>
+                </div>
+                <?php if (filter_var($berita['gambar'], FILTER_VALIDATE_URL)): ?>
+                  <img src="<?= $berita['gambar'] ?>" alt="Preview" id="imagePreview" class="img-fluid">
+                <?php else: ?>
+                  <img src="../uploads/berita/<?= $berita['gambar'] ?>" alt="Preview" id="imagePreview" class="img-fluid">
+                <?php endif; ?>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upload Gambar Baru -->
+          <div class="form-group">
+            <label>
+              <i class="bi bi-cloud-upload-fill"></i>
+              Ganti Gambar
+              <span class="label-optional">Opsional</span>
+            </label>
+            <input type="file" 
+                   name="gambar" 
+                   class="form-control"
+                   accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
+                   id="gambarInput">
+            <div class="form-help-box">
+              <i class="bi bi-info-circle-fill"></i>
+              <span>Format yang didukung: JPG, JPEG, PNG, GIF, WEBP | Ukuran maksimal: 5MB</span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Isi Berita Lengkap -->
-      <div class="form-group">
-        <label>
-          <i class="bi bi-file-text"></i>
-          Isi Berita Lengkap <span class="label-optional">(Opsional)</span>
-        </label>
-        <textarea name="isi_berita" 
-                  class="form-control" 
-                  rows="8"
-                  placeholder="Tulis isi berita secara lengkap dan detail..."><?= htmlspecialchars($berita['isi_berita']) ?></textarea>
-        <div class="form-help-text">
-          <i class="bi bi-lightbulb"></i>
-          Kosongkan jika berita menggunakan tautan eksternal
-        </div>
-      </div>
-
-      <hr class="section-divider">
-
-      <!-- Gambar Saat Ini -->
-      <div class="form-group">
-        <label>
-          <i class="bi bi-image"></i>
-          Gambar Berita Saat Ini
-        </label>
-        <div class="image-preview-box">
-          <span class="image-preview-label">Preview Gambar</span>
-          <?php if (filter_var($berita['gambar'], FILTER_VALIDATE_URL)): ?>
-            <img src="<?= $berita['gambar'] ?>" alt="Preview" id="imagePreview">
-          <?php else: ?>
-            <img src="../uploads/berita/<?= $berita['gambar'] ?>" alt="Preview" id="imagePreview">
-          <?php endif; ?>
-        </div>
-      </div>
-
-      <!-- Upload Gambar Baru -->
-      <div class="form-group">
-        <label>
-          <i class="bi bi-upload"></i>
-          Ganti Gambar <span class="label-optional">(Opsional)</span>
-        </label>
-        <input type="file" 
-               name="gambar" 
-               class="form-control"
-               accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
-               id="gambarInput">
-        <div class="form-help-text">
-          <i class="bi bi-info-circle"></i>
-          Format yang didukung: JPG, JPEG, PNG, GIF, WEBP (Maks. 5MB)
-        </div>
-      </div>
-
-      <hr class="section-divider">
+        <hr class="section-divider">
 
       <!-- Row: Tanggal -->
       <div class="form-row">
