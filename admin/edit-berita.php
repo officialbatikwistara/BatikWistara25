@@ -4,11 +4,13 @@
 
 <?php
 if (!isset($_GET['id']) && !isset($_POST['update_berita'])) {
-  echo "ID berita tidak ditemukan.";
+  echo "<div class='alert alert-danger'><i class='bi bi-exclamation-circle'></i> ID berita tidak ditemukan.</div>";
   exit;
 }
 
 $folder = "../uploads/berita/";
+$success_message = "";
+$error_message = "";
 
 // ======================
 // === Proses Simpan ===
@@ -33,33 +35,37 @@ if (isset($_POST['update_berita'])) {
     $tmp        = $_FILES['gambar']['tmp_name'];
     $gambarBaru = time() . '-' . $gambar;
 
-    move_uploaded_file($tmp, $folder . $gambarBaru);
-
-    // Hapus gambar lama (jika bukan URL)
-    if (!filter_var($gambar_lama, FILTER_VALIDATE_URL) && file_exists($folder . $gambar_lama)) {
-      unlink($folder . $gambar_lama);
+    if (move_uploaded_file($tmp, $folder . $gambarBaru)) {
+      // Hapus gambar lama (jika bukan URL)
+      if (!filter_var($gambar_lama, FILTER_VALIDATE_URL) && file_exists($folder . $gambar_lama)) {
+        unlink($folder . $gambar_lama);
+      }
+      $gambar_final = $gambarBaru;
+    } else {
+      $error_message = "Gagal mengupload gambar.";
     }
-
-    $gambar_final = $gambarBaru;
   }
 
   // Update data
-  $sql = "UPDATE berita SET 
-            judul='$judul',
-            deskripsi='$deskripsi',
-            isi_berita='$isi',
-            gambar='$gambar_final',
-            tanggal='$tanggal',
-            sumber='$sumber',
-            tautan_sumber='$tautan_sumber'
-          WHERE id_berita='$id'";
+  if (empty($error_message)) {
+    $sql = "UPDATE berita SET 
+              judul='$judul',
+              deskripsi='$deskripsi',
+              isi_berita='$isi',
+              gambar='$gambar_final',
+              tanggal='$tanggal',
+              sumber='$sumber',
+              tautan_sumber='$tautan_sumber'
+            WHERE id_berita='$id'";
 
-  $simpan = mysqli_query($conn, $sql);
-  if ($simpan) {
-    header("Location: dashboard.php");
-    exit;
-  } else {
-    echo "<p style='color:red;'>Gagal menyimpan perubahan.</p>";
+    $simpan = mysqli_query($conn, $sql);
+    if ($simpan) {
+      $success_message = "Berita berhasil diperbarui!";
+      // Redirect setelah 2 detik
+      echo "<script>setTimeout(function(){ window.location.href='dashboard.php'; }, 2000);</script>";
+    } else {
+      $error_message = "Gagal menyimpan perubahan: " . mysqli_error($conn);
+    }
   }
 }
 
@@ -71,46 +77,262 @@ $data = mysqli_query($conn, "SELECT * FROM berita WHERE id_berita = '$id'");
 $berita = mysqli_fetch_assoc($data);
 
 if (!$berita) {
-  echo "Data tidak ditemukan.";
+  echo "<div class='alert alert-danger'><i class='bi bi-exclamation-circle'></i> Data tidak ditemukan.</div>";
   exit;
 }
 ?>
 
-<h2>Edit Berita</h2>
+<div class="form-container">
+  <!-- Page Title -->
+  <h2>
+    <i class="bi bi-pencil-square"></i>
+    Edit Berita
+  </h2>
+  <p class="form-subtitle">Perbarui informasi berita dengan mengisi form di bawah ini</p>
 
-<form action="edit-berita.php" method="POST" enctype="multipart/form-data">
-  <input type="hidden" name="id" value="<?= $berita['id_berita'] ?>">
-
-  <label>Judul Berita</label>
-  <input type="text" name="judul" value="<?= htmlspecialchars($berita['judul']) ?>" required>
-
-  <label>Deskripsi Singkat</label>
-  <textarea name="deskripsi" rows="3" required><?= htmlspecialchars($berita['deskripsi']) ?></textarea>
-
-  <label>Isi Berita Lengkap</label>
-  <textarea name="isi_berita" rows="6"><?= htmlspecialchars($berita['isi_berita']) ?></textarea>
-
-  <label>Gambar Saat Ini</label><br>
-  <?php if (filter_var($berita['gambar'], FILTER_VALIDATE_URL)) : ?>
-    <img src="<?= $berita['gambar'] ?>" height="80">
-  <?php else : ?>
-    <img src="../uploads/berita/<?= $berita['gambar'] ?>" height="80">
+  <!-- Alert Messages -->
+  <?php if (!empty($success_message)): ?>
+  <div class="alert alert-success">
+    <i class="bi bi-check-circle"></i>
+    <span><?= $success_message ?></span>
+  </div>
   <?php endif; ?>
-  <br><br>
 
-  <label>Ganti Gambar (Opsional)</label>
-  <input type="file" name="gambar" accept="image/*">
+  <?php if (!empty($error_message)): ?>
+  <div class="alert alert-danger">
+    <i class="bi bi-exclamation-circle"></i>
+    <span><?= $error_message ?></span>
+  </div>
+  <?php endif; ?>
 
-  <label>Tanggal</label>
-  <input type="date" name="tanggal" value="<?= $berita['tanggal'] ?>" required>
+  <!-- Form Card -->
+  <div class="form-card">
+    <form action="edit-berita.php" method="POST" enctype="multipart/form-data" id="editBeritaForm">
+      <input type="hidden" name="id" value="<?= $berita['id_berita'] ?>">
 
-  <label>Sumber Berita (Opsional)</label>
-  <input type="text" name="sumber" value="<?= htmlspecialchars($berita['sumber']) ?>">
+      <!-- Judul Berita -->
+      <div class="form-group">
+        <label>
+          <i class="bi bi-fonts"></i>
+          Judul Berita <span class="required">*</span>
+        </label>
+        <input type="text" 
+               name="judul" 
+               class="form-control" 
+               value="<?= htmlspecialchars($berita['judul']) ?>" 
+               placeholder="Masukkan judul berita yang menarik"
+               required
+               maxlength="200"
+               id="judulInput">
+        <div class="char-counter">
+          <span id="judulCounter">0</span>/200 karakter
+        </div>
+      </div>
 
-  <label>Tautan Sumber (Opsional)</label>
-  <input type="url" name="tautan_sumber" value="<?= htmlspecialchars($berita['tautan_sumber']) ?>">
+      <!-- Deskripsi Singkat -->
+      <div class="form-group">
+        <label>
+          <i class="bi bi-card-text"></i>
+          Deskripsi Singkat <span class="required">*</span>
+        </label>
+        <textarea name="deskripsi" 
+                  class="form-control" 
+                  rows="3" 
+                  placeholder="Ringkasan singkat dari berita (maks. 250 karakter)"
+                  required
+                  maxlength="250"
+                  id="deskripsiInput"><?= htmlspecialchars($berita['deskripsi']) ?></textarea>
+        <div class="char-counter">
+          <span id="deskripsiCounter">0</span>/250 karakter
+        </div>
+        <div class="form-help-text">
+          <i class="bi bi-info-circle"></i>
+          Deskripsi ini akan muncul sebagai preview di halaman daftar berita
+        </div>
+      </div>
 
-  <button type="submit" name="update_berita">Simpan Perubahan</button>
-</button>
+      <!-- Isi Berita Lengkap -->
+      <div class="form-group">
+        <label>
+          <i class="bi bi-file-text"></i>
+          Isi Berita Lengkap <span class="label-optional">(Opsional)</span>
+        </label>
+        <textarea name="isi_berita" 
+                  class="form-control" 
+                  rows="8"
+                  placeholder="Tulis isi berita secara lengkap dan detail..."><?= htmlspecialchars($berita['isi_berita']) ?></textarea>
+        <div class="form-help-text">
+          <i class="bi bi-lightbulb"></i>
+          Kosongkan jika berita menggunakan tautan eksternal
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- Gambar Saat Ini -->
+      <div class="form-group">
+        <label>
+          <i class="bi bi-image"></i>
+          Gambar Berita Saat Ini
+        </label>
+        <div class="image-preview-box">
+          <span class="image-preview-label">Preview Gambar</span>
+          <?php if (filter_var($berita['gambar'], FILTER_VALIDATE_URL)): ?>
+            <img src="<?= $berita['gambar'] ?>" alt="Preview" id="imagePreview">
+          <?php else: ?>
+            <img src="../uploads/berita/<?= $berita['gambar'] ?>" alt="Preview" id="imagePreview">
+          <?php endif; ?>
+        </div>
+      </div>
+
+      <!-- Upload Gambar Baru -->
+      <div class="form-group">
+        <label>
+          <i class="bi bi-upload"></i>
+          Ganti Gambar <span class="label-optional">(Opsional)</span>
+        </label>
+        <input type="file" 
+               name="gambar" 
+               class="form-control"
+               accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
+               id="gambarInput">
+        <div class="form-help-text">
+          <i class="bi bi-info-circle"></i>
+          Format yang didukung: JPG, JPEG, PNG, GIF, WEBP (Maks. 5MB)
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- Row: Tanggal -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>
+            <i class="bi bi-calendar-event"></i>
+            Tanggal Publikasi <span class="required">*</span>
+          </label>
+          <input type="date" 
+                 name="tanggal" 
+                 class="form-control"
+                 value="<?= $berita['tanggal'] ?>" 
+                 required>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <i class="bi bi-building"></i>
+            Sumber Berita <span class="label-optional">(Opsional)</span>
+          </label>
+          <input type="text" 
+                 name="sumber" 
+                 class="form-control"
+                 value="<?= htmlspecialchars($berita['sumber']) ?>"
+                 placeholder="Contoh: Kompas.com, CNN Indonesia">
+        </div>
+      </div>
+
+      <!-- Tautan Sumber -->
+      <div class="form-group">
+        <label>
+          <i class="bi bi-link-45deg"></i>
+          Tautan Sumber <span class="label-optional">(Opsional)</span>
+        </label>
+        <input type="url" 
+               name="tautan_sumber" 
+               class="form-control"
+               value="<?= htmlspecialchars($berita['tautan_sumber']) ?>"
+               placeholder="https://example.com/artikel">
+        <div class="form-help-text">
+          <i class="bi bi-info-circle"></i>
+          Jika diisi, tombol "Baca Selengkapnya" akan mengarah ke link ini
+        </div>
+      </div>
+
+      <!-- Button Group -->
+      <div class="button-group">
+        <button type="submit" name="update_berita" class="btn-primary">
+          <i class="bi bi-save"></i>
+          Simpan Perubahan
+        </button>
+        <a href="dashboard.php" class="btn-secondary">
+          <i class="bi bi-x-circle"></i>
+          Batal
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+// Character Counter
+function updateCounter(inputId, counterId, maxLength) {
+  const input = document.getElementById(inputId);
+  const counter = document.getElementById(counterId);
+  
+  function update() {
+    const length = input.value.length;
+    counter.textContent = length;
+    
+    if (length > maxLength * 0.9) {
+      counter.style.color = '#DC3545';
+    } else if (length > maxLength * 0.7) {
+      counter.style.color = '#f59e0b';
+    } else {
+      counter.style.color = '#6C757D';
+    }
+  }
+  
+  input.addEventListener('input', update);
+  update(); // Initial count
+}
+
+updateCounter('judulInput', 'judulCounter', 200);
+updateCounter('deskripsiInput', 'deskripsiCounter', 250);
+
+// Image Preview
+document.getElementById('gambarInput').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (file) {
+    // Validate file size (5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      alert('Ukuran file terlalu besar! Maksimal 5MB');
+      this.value = '';
+      return;
+    }
+    
+    // Validate file type
+    const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+    if (!validTypes.includes(file.type)) {
+      alert('Format file tidak didukung! Gunakan JPG, PNG, GIF, atau WEBP');
+      this.value = '';
+      return;
+    }
+    
+    // Show preview
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('imagePreview').src = e.target.result;
+    }
+    reader.readAsDataURL(file);
+  }
+});
+
+// Form Submit Loading State
+document.getElementById('editBeritaForm').addEventListener('submit', function(e) {
+  const submitBtn = this.querySelector('button[type="submit"]');
+  submitBtn.classList.add('btn-loading');
+  submitBtn.disabled = true;
+});
+
+// Auto hide alert after 5 seconds
+setTimeout(function() {
+  const alerts = document.querySelectorAll('.alert');
+  alerts.forEach(alert => {
+    alert.style.transition = 'opacity 0.5s';
+    alert.style.opacity = '0';
+    setTimeout(() => alert.remove(), 500);
+  });
+}, 5000);
+</script>
 
 <?php include 'footer.php'; ?>
